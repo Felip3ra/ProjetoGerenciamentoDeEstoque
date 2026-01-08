@@ -1,0 +1,103 @@
+<div class="page">
+  <header class="page-header">
+    <div>
+      <h1>Usuários</h1>
+      <p class="page-subtitle">12 usuário(s) encontrado(s)</p>
+    </div>
+    <button class="primary-button" type="button">
+      <lucide-icon [name]="Plus" class="button-icon"></lucide-icon>
+      Novo Usuário
+    </button>
+  </header>
+
+  <section class="card search-card">
+    <div class="search-field">
+      <lucide-icon [name]="Search" class="search-icon" aria-hidden="true"></lucide-icon>
+      <input type="text" placeholder="Buscar por nome, email ou setor..." />
+    </div>
+  </section>
+
+  <section class="card table-card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Nome</th>
+            <th>Email</th>
+            <th>Setor</th>
+            <th>Perfil</th>
+            <th>Status</th>
+            <th>Itens</th>
+            <th class="align-right">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Letícia Martins</td>
+            <td>leticia@empresa.com</td>
+            <td>Operações</td>
+            <td><span class="badge badge-blue">OPERADOR</span></td>
+            <td><span class="badge badge-green">Ativo</span></td>
+            <td>
+              <button class="link-button" type="button">
+                <lucide-icon [name]="Package" class="link-icon"></lucide-icon>
+                3 itens
+              </button>
+            </td>
+            <td class="align-right">
+              <div class="action-row">
+                <button class="icon-button" type="button" title="Editar">
+                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Deletar">
+                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>João Lima</td>
+            <td>joao@empresa.com</td>
+            <td>Administrativo</td>
+            <td><span class="badge badge-gray">LEITOR</span></td>
+            <td><span class="badge badge-green">Ativo</span></td>
+            <td><span class="muted">0</span></td>
+            <td class="align-right">
+              <div class="action-row">
+                <button class="icon-button" type="button" title="Editar">
+                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Deletar">
+                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>Fernanda Alves</td>
+            <td>fernanda@empresa.com</td>
+            <td>TI</td>
+            <td><span class="badge badge-purple">ADMIN</span></td>
+            <td><span class="badge badge-gray">Inativo</span></td>
+            <td>
+              <button class="link-button" type="button">
+                <lucide-icon [name]="Package" class="link-icon"></lucide-icon>
+                2 itens
+              </button>
+            </td>
+            <td class="align-right">
+              <div class="action-row">
+                <button class="icon-button" type="button" title="Editar">
+                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Deletar">
+                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
