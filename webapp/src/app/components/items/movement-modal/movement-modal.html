@@ -1,0 +1,45 @@
+<div class="modal-overlay">
+  <div class="modal-card">
+    <header class="modal-header">
+      <h3>Atribuir Item</h3>
+      <button class="icon-button" type="button" aria-label="Fechar">
+        <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
+      </button>
+    </header>
+
+    <form class="modal-body">
+      <div class="item-summary">
+        <p class="label">Item:</p>
+        <p class="value">MacBook Pro 16"</p>
+        <p class="meta">Nº 0000001</p>
+        <p class="meta">Atualmente com: Letícia Silva</p>
+      </div>
+
+      <div class="alert error-alert">
+        Selecione um usuário válido.
+      </div>
+
+      <div>
+        <label>
+          Atribuir para <span class="required">*</span>
+        </label>
+        <select required>
+          <option value="">Selecione um usuário</option>
+          <option>Letícia Silva (Operações)</option>
+          <option>João Lima (TI)</option>
+          <option>Fernanda Alves (Admin)</option>
+        </select>
+      </div>
+
+      <div>
+        <label>Observação</label>
+        <textarea rows="3" placeholder="Observações sobre esta movimentação"></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button class="button-ghost" type="button">Cancelar</button>
+        <button class="button-primary" type="submit">Atribuir</button>
+      </div>
+    </form>
+  </div>
+</div>
