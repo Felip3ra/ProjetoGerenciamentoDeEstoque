@@ -1,0 +1,155 @@
+<div class="page">
+  <header class="page-header">
+    <div>
+      <h1>Relatórios</h1>
+      <p class="page-subtitle">Análise e estatísticas do inventário</p>
+    </div>
+  </header>
+
+  <section class="stats-grid">
+    <div class="stat-card">
+      <div class="stat-header">
+        <p class="stat-label">Total de Itens</p>
+        <span class="stat-icon stat-icon-blue">
+          <lucide-icon [name]="Package" class="stat-icon-svg"></lucide-icon>
+        </span>
+      </div>
+      <p class="stat-value stat-value-blue">120</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-header">
+        <p class="stat-label">Disponíveis</p>
+        <span class="stat-icon stat-icon-green">
+          <lucide-icon [name]="CheckCircle" class="stat-icon-svg"></lucide-icon>
+        </span>
+      </div>
+      <p class="stat-value stat-value-green">78</p>
+      <p class="stat-note">65% do total</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-header">
+        <p class="stat-label">Em Uso</p>
+        <span class="stat-icon stat-icon-indigo">
+          <lucide-icon [name]="Users" class="stat-icon-svg"></lucide-icon>
+        </span>
+      </div>
+      <p class="stat-value stat-value-indigo">35</p>
+      <p class="stat-note">29% do total</p>
+    </div>
+    <div class="stat-card">
+      <div class="stat-header">
+        <p class="stat-label">Manutenção</p>
+        <span class="stat-icon stat-icon-orange">
+          <lucide-icon [name]="Wrench" class="stat-icon-svg"></lucide-icon>
+        </span>
+      </div>
+      <p class="stat-value stat-value-orange">7</p>
+    </div>
+  </section>
+
+  <section class="charts-grid">
+    <div class="card chart-card">
+      <div class="card-header">
+        <div class="card-title">
+          <lucide-icon [name]="BarChart" class="card-icon"></lucide-icon>
+          <h3>Itens por Categoria</h3>
+        </div>
+      </div>
+      <div class="chart-placeholder">Gráfico de Barras</div>
+    </div>
+    <div class="card chart-card">
+      <div class="card-header">
+        <div class="card-title">
+          <lucide-icon [name]="PieChart" class="card-icon"></lucide-icon>
+          <h3>Distribuição por Status</h3>
+        </div>
+      </div>
+      <div class="chart-placeholder">Gráfico de Pizza</div>
+    </div>
+  </section>
+
+  <section class="card table-card">
+    <div class="card-header">
+      <div class="card-title">
+        <lucide-icon [name]="Users" class="card-icon"></lucide-icon>
+        <h3>Itens por Usuário</h3>
+      </div>
+    </div>
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Usuário</th>
+            <th class="align-right">Quantidade de Itens</th>
+            <th class="align-right">% do Total</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Letícia Martins</td>
+            <td class="align-right">5</td>
+            <td class="align-right">14%</td>
+          </tr>
+          <tr>
+            <td>João Lima</td>
+            <td class="align-right">3</td>
+            <td class="align-right">9%</td>
+          </tr>
+          <tr>
+            <td>Fernanda Alves</td>
+            <td class="align-right">4</td>
+            <td class="align-right">11%</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section class="card summary-card">
+    <h3>Resumo Executivo</h3>
+    <div class="summary-grid">
+      <div>
+        <h4>Estatísticas Gerais</h4>
+        <ul>
+          <li>
+            <span>Total de itens cadastrados:</span>
+            <span>120</span>
+          </li>
+          <li>
+            <span>Itens ativos (não baixados):</span>
+            <span>113</span>
+          </li>
+          <li>
+            <span>Taxa de utilização:</span>
+            <span class="highlight">31%</span>
+          </li>
+          <li>
+            <span>Usuários com itens:</span>
+            <span>6</span>
+          </li>
+        </ul>
+      </div>
+      <div>
+        <h4>Categorias</h4>
+        <ul>
+          <li>
+            <span>Total de categorias:</span>
+            <span>8</span>
+          </li>
+          <li>
+            <span>Notebooks:</span>
+            <span>22 item(ns)</span>
+          </li>
+          <li>
+            <span>Monitores:</span>
+            <span>17 item(ns)</span>
+          </li>
+          <li>
+            <span>Impressoras:</span>
+            <span>9 item(ns)</span>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</div>
