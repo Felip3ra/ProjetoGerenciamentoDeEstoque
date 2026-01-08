@@ -1,0 +1,156 @@
+<div class="page">
+  <header class="page-header">
+    <div>
+      <h1>Itens</h1>
+      <p class="page-subtitle">24 item(ns) encontrado(s)</p>
+    </div>
+    <button class="primary-button" type="button">
+      <lucide-icon [name]="Plus" class="button-icon"></lucide-icon>
+      Novo Item
+    </button>
+  </header>
+
+  <section class="card filter-card">
+    <div class="filter-row">
+      <div class="search-field">
+        <lucide-icon [name]="Search" class="search-icon" aria-hidden="true"></lucide-icon>
+        <input
+          type="text"
+          placeholder="Buscar por nome, marca, modelo ou número de série..."
+        />
+      </div>
+      <button class="outline-button" type="button">
+        <lucide-icon [name]="Filter" class="button-icon"></lucide-icon>
+        Filtros
+      </button>
+    </div>
+
+    <div class="filters-grid">
+      <div class="field">
+        <label>Status</label>
+        <select>
+          <option>Todos</option>
+          <option>Disponível</option>
+          <option>Em Uso</option>
+          <option>Manutenção</option>
+          <option>Baixado</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Categoria</label>
+        <select>
+          <option>Todas</option>
+          <option>Notebooks</option>
+          <option>Monitores</option>
+          <option>Impressoras</option>
+        </select>
+      </div>
+      <div class="field">
+        <label>Usuário</label>
+        <select>
+          <option>Todos</option>
+          <option>Letícia</option>
+          <option>João</option>
+          <option>Fernanda</option>
+        </select>
+      </div>
+    </div>
+  </section>
+
+  <section class="card table-card">
+    <div class="table-wrapper">
+      <table>
+        <thead>
+          <tr>
+            <th>Item</th>
+            <th>Nº Série</th>
+            <th>Categoria</th>
+            <th>Status</th>
+            <th>Responsável</th>
+            <th class="align-right">Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>
+              <p class="table-title">Notebook Dell 5420</p>
+              <p class="table-subtitle">Dell • 16GB</p>
+            </td>
+            <td>5420-AX11</td>
+            <td>Notebooks</td>
+            <td><span class="badge badge-blue">Em Uso</span></td>
+            <td>Letícia</td>
+            <td class="align-right">
+              <div class="action-row">
+                <button class="icon-button" type="button" title="Mais opcoes">
+                  <lucide-icon [name]="More" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Ver detalhes e historico">
+                  <lucide-icon [name]="History" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Editar">
+                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Deletar">
+                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="table-title">Monitor LG 27"</p>
+              <p class="table-subtitle">LG • IPS</p>
+            </td>
+            <td>LG-27-990</td>
+            <td>Monitores</td>
+            <td><span class="badge badge-green">Disponível</span></td>
+            <td>-</td>
+            <td class="align-right">
+              <div class="action-row">
+                <button class="icon-button" type="button" title="Mais opcoes">
+                  <lucide-icon [name]="More" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Ver detalhes e historico">
+                  <lucide-icon [name]="History" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Editar">
+                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Deletar">
+                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>
+              <p class="table-title">Impressora HP</p>
+              <p class="table-subtitle">Laserjet 3300</p>
+            </td>
+            <td>HP-3300</td>
+            <td>Impressoras</td>
+            <td><span class="badge badge-orange">Manutenção</span></td>
+            <td>Roberta</td>
+            <td class="align-right">
+              <div class="action-row">
+                <button class="icon-button" type="button" title="Mais opcoes">
+                  <lucide-icon [name]="More" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Ver detalhes e historico">
+                  <lucide-icon [name]="History" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Editar">
+                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
+                </button>
+                <button class="icon-button" type="button" title="Deletar">
+                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+</div>
