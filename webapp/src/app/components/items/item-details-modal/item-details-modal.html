@@ -1,0 +1,123 @@
+<div class="modal-overlay">
+  <div class="modal-card">
+    <header class="modal-header">
+      <div class="header-main">
+        <lucide-icon [name]="PackageIcon" class="header-icon"></lucide-icon>
+        <div>
+          <h2>MacBook Pro 16"</h2>
+          <p class="subtitle">Notebook</p>
+        </div>
+      </div>
+      <button class="icon-button" type="button" aria-label="Fechar">
+        <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
+      </button>
+    </header>
+
+    <div class="modal-body">
+      <section>
+        <h3>Informações do Item</h3>
+        <div class="info-grid">
+          <div class="info-row">
+            <lucide-icon [name]="HashIcon" class="info-icon"></lucide-icon>
+            <div>
+              <p class="label">Número de Série</p>
+              <p class="value">0000001</p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <lucide-icon [name]="FileTextIcon" class="info-icon"></lucide-icon>
+            <div>
+              <p class="label">Patrimônio</p>
+              <p class="value">PAT-001</p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <lucide-icon [name]="PackageIcon" class="info-icon"></lucide-icon>
+            <div>
+              <p class="label">Marca/Modelo</p>
+              <p class="value">Apple M1 Pro</p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <lucide-icon [name]="CalendarIcon" class="info-icon"></lucide-icon>
+            <div>
+              <p class="label">Status</p>
+              <span class="badge badge-blue">Em Uso</span>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <lucide-icon [name]="UserIcon" class="info-icon"></lucide-icon>
+            <div>
+              <p class="label">Responsável Atual</p>
+              <p class="value">Letícia Silva</p>
+            </div>
+          </div>
+
+          <div class="info-row">
+            <lucide-icon [name]="CalendarIcon" class="info-icon"></lucide-icon>
+            <div>
+              <p class="label">Data de Compra</p>
+              <p class="value">10/01/2026</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="description">
+          <p class="label">Descrição</p>
+          <p class="value">Notebook para liderança de projetos.</p>
+        </div>
+      </section>
+
+      <section>
+        <div class="section-title">
+          <lucide-icon [name]="HistoryIcon" class="section-icon"></lucide-icon>
+          <h3>Histórico de Movimentações</h3>
+        </div>
+
+        <div class="timeline">
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <span class="badge badge-blue">Atribuição</span>
+                <span class="timestamp">10/01/2026 09:15</span>
+              </div>
+              <p class="timeline-text">
+                De: <strong>TI</strong> → Para: <strong>Letícia Silva</strong>
+              </p>
+              <p class="timeline-text">
+                Status: <span class="badge badge-green">Disponível</span> → <span class="badge badge-blue">Em Uso</span>
+              </p>
+              <p class="timeline-note">"Entrega para novo colaborador"</p>
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <span class="timeline-dot"></span>
+            <div class="timeline-card">
+              <div class="timeline-header">
+                <span class="badge badge-green">Devolução</span>
+                <span class="timestamp">05/01/2026 11:25</span>
+              </div>
+              <p class="timeline-text">
+                De: <strong>Letícia Silva</strong>
+              </p>
+              <p class="timeline-text">
+                Status: <span class="badge badge-blue">Em Uso</span> → <span class="badge badge-green">Disponível</span>
+              </p>
+              <p class="timeline-note">"Troca de equipamento"</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+
+    <footer class="modal-footer">
+      <button class="button-ghost" type="button">Fechar</button>
+    </footer>
+  </div>
+</div>
