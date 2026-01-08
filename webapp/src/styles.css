@@ -1,6 +1,15 @@
 /* You can add global styles to this file, and also import other style files */
 @import "bootstrap/dist/css/bootstrap.min.css";
 
+lucide-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    line-height: 0;
+    font-size: 18px;
+}
+
 
 html, body {
     margin: 0;
