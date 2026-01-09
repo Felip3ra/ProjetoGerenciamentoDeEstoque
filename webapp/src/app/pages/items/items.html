@@ -4,7 +4,7 @@
       <h1>Itens</h1>
       <p class="page-subtitle">24 item(ns) encontrado(s)</p>
     </div>
-    <button class="primary-button" type="button">
+    <button class="primary-button" type="button" (click)="showItemForm()">
       <lucide-icon [name]="Plus" class="button-icon"></lucide-icon>
       Novo Item
     </button>
@@ -82,13 +82,13 @@
             <td>Letícia</td>
             <td class="align-right">
               <div class="action-row">
-                <button class="icon-button" type="button" title="Mais opcoes">
+                <button class="icon-button" type="button" title="Mais opcoes" (click)="showMovement()">
                   <lucide-icon [name]="More" class="icon"></lucide-icon>
                 </button>
-                <button class="icon-button" type="button" title="Ver detalhes e historico">
+                <button class="icon-button" type="button" title="Ver detalhes e historico" (click)="showItemDetails()">
                   <lucide-icon [name]="History" class="icon"></lucide-icon>
                 </button>
-                <button class="icon-button" type="button" title="Editar">
+                <button class="icon-button" type="button" title="Editar" (click)="showItemEdit()">
                   <lucide-icon [name]="Edit" class="icon"></lucide-icon>
                 </button>
                 <button class="icon-button" type="button" title="Deletar">
@@ -108,13 +108,13 @@
             <td>-</td>
             <td class="align-right">
               <div class="action-row">
-                <button class="icon-button" type="button" title="Mais opcoes">
+                <button class="icon-button" type="button" title="Mais opcoes" (click)="showMovement()">
                   <lucide-icon [name]="More" class="icon"></lucide-icon>
                 </button>
-                <button class="icon-button" type="button" title="Ver detalhes e historico">
+                <button class="icon-button" type="button" title="Ver detalhes e historico" (click)="showItemDetails()">
                   <lucide-icon [name]="History" class="icon"></lucide-icon>
                 </button>
-                <button class="icon-button" type="button" title="Editar">
+                <button class="icon-button" type="button" title="Editar" (click)="showItemEdit()">
                   <lucide-icon [name]="Edit" class="icon"></lucide-icon>
                 </button>
                 <button class="icon-button" type="button" title="Deletar">
@@ -134,13 +134,13 @@
             <td>Roberta</td>
             <td class="align-right">
               <div class="action-row">
-                <button class="icon-button" type="button" title="Mais opcoes">
+                <button class="icon-button" type="button" title="Mais opcoes" (click)="showMovement()">
                   <lucide-icon [name]="More" class="icon"></lucide-icon>
                 </button>
-                <button class="icon-button" type="button" title="Ver detalhes e historico">
+                <button class="icon-button" type="button" title="Ver detalhes e historico" (click)="showItemDetails()">
                   <lucide-icon [name]="History" class="icon"></lucide-icon>
                 </button>
-                <button class="icon-button" type="button" title="Editar">
+                <button class="icon-button" type="button" title="Editar" (click)="showItemEdit()">
                   <lucide-icon [name]="Edit" class="icon"></lucide-icon>
                 </button>
                 <button class="icon-button" type="button" title="Deletar">
@@ -154,3 +154,20 @@
     </div>
   </section>
 </div>
+
+@if(OpenItemForm()){
+  
+  <app-item-form-modal (close)="OpenItemForm.set(false)"></app-item-form-modal>
+}
+@if (OpenItemEdit()) {
+
+  <app-item-edit-modal (close)="OpenItemEdit.set(false)"></app-item-edit-modal>
+}
+@if (OpenItemDetails()) {
+
+  <app-item-details-modal (close)="OpenItemDetails.set(false)"></app-item-details-modal>
+}
+@if (OpenMovement()) {
+
+  <app-movement-modal (close)="OpenMovement.set(false)"></app-movement-modal>
+}

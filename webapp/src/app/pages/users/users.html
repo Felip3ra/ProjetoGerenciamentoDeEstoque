@@ -4,7 +4,7 @@
       <h1>Usuários</h1>
       <p class="page-subtitle">12 usuário(s) encontrado(s)</p>
     </div>
-    <button class="primary-button" type="button">
+    <button class="primary-button" type="button" (click)="showUserCreate()">
       <lucide-icon [name]="Plus" class="button-icon"></lucide-icon>
       Novo Usuário
     </button>
@@ -46,7 +46,7 @@
             </td>
             <td class="align-right">
               <div class="action-row">
-                <button class="icon-button" type="button" title="Editar">
+                <button class="icon-button" type="button" title="Editar" (click)="showUserEdit()">
                   <lucide-icon [name]="Edit" class="icon"></lucide-icon>
                 </button>
                 <button class="icon-button" type="button" title="Deletar">
@@ -64,7 +64,7 @@
             <td><span class="muted">0</span></td>
             <td class="align-right">
               <div class="action-row">
-                <button class="icon-button" type="button" title="Editar">
+                <button class="icon-button" type="button" title="Editar" (click)="showUserEdit()">
                   <lucide-icon [name]="Edit" class="icon"></lucide-icon>
                 </button>
                 <button class="icon-button" type="button" title="Deletar">
@@ -87,7 +87,7 @@
             </td>
             <td class="align-right">
               <div class="action-row">
-                <button class="icon-button" type="button" title="Editar">
+                <button class="icon-button" type="button" title="Editar" (click)="showUserEdit()">
                   <lucide-icon [name]="Edit" class="icon"></lucide-icon>
                 </button>
                 <button class="icon-button" type="button" title="Deletar">
@@ -101,3 +101,6 @@
     </div>
   </section>
 </div>
+
+<app-user-create-modal *ngIf="OpenUserCreate()" (close)="OpenUserCreate.set(false)"></app-user-create-modal>
+<app-user-edit-modal *ngIf="OpenUserEdit()" (close)="OpenUserEdit.set(false)"></app-user-edit-modal>

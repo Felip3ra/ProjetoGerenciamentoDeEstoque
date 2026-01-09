@@ -1,0 +1,57 @@
+<div class="modal-overlay" (click)="close.emit()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+    <header class="modal-header">
+      <h2>Editar Usuario</h2>
+      <button class="icon-button" type="button" aria-label="Fechar" (click)="close.emit()">
+        <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
+      </button>
+    </header>
+
+    <form class="modal-body">
+      <div class="alert error-alert">
+        Erro ao salvar o usuario. Verifique os campos obrigatorios.
+      </div>
+
+      <div class="form-grid">
+        <div>
+          <label>
+            Nome <span class="required">*</span>
+          </label>
+          <input type="text" value="Leticia Martins" required />
+        </div>
+
+        <div>
+          <label>Email</label>
+          <input type="email" value="leticia@empresa.com" />
+        </div>
+
+        <div>
+          <label>Setor</label>
+          <input type="text" value="Operacoes" />
+        </div>
+
+        <div>
+          <label>Perfil</label>
+          <select>
+            <option>Leitor</option>
+            <option selected>Operador</option>
+            <option>Admin</option>
+          </select>
+        </div>
+
+        <div class="full">
+          <label>Status</label>
+          <select>
+            <option selected>Ativo</option>
+            <option>Inativo</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="button-ghost" type="button" (click)="close.emit()">Cancelar</button>
+        <button class="button-primary" type="submit">Salvar</button>
+      </div>
+    </form>
+  </div>
+</div>

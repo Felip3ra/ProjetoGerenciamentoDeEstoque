@@ -2,13 +2,13 @@ import { Component, EventEmitter, Output } from '@angular/core';
 import { LucideAngularModule, X } from 'lucide-angular';
 
 @Component({
-  selector: 'app-movement-modal',
+  selector: 'app-item-edit-modal',
   standalone: true,
   imports: [LucideAngularModule],
-  templateUrl: './movement-modal.html',
-  styleUrls: ['./movement-modal.css'],
+  templateUrl: './item-edit-modal.html',
+  styleUrls: ['./item-edit-modal.css'],
 })
-export class MovementModal {
+export class ItemEditModal {
   readonly CloseIcon = X;
   @Output() close = new EventEmitter<void>();
 }

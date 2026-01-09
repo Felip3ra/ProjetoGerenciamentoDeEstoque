@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { LucideAngularModule, X } from 'lucide-angular';
 
 @Component({
@@ -10,4 +10,5 @@ import { LucideAngularModule, X } from 'lucide-angular';
 })
 export class ItemFormModal {
   readonly CloseIcon = X;
+  @Output() close = new EventEmitter<void>();
 }

@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, EventEmitter, Output } from '@angular/core';
 import { Calendar, FileText, Hash, History, LucideAngularModule, Package, User, X } from 'lucide-angular';
 
 @Component({
@@ -16,4 +16,5 @@ export class ItemDetailsModal {
   readonly CalendarIcon = Calendar;
   readonly UserIcon = User;
   readonly HistoryIcon = History;
+  @Output() close = new EventEmitter<void>();
 }

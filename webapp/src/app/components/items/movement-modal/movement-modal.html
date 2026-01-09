@@ -1,8 +1,8 @@
-<div class="modal-overlay">
-  <div class="modal-card">
+<div class="modal-overlay" (click)="close.emit()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
     <header class="modal-header">
       <h3>Atribuir Item</h3>
-      <button class="icon-button" type="button" aria-label="Fechar">
+      <button class="icon-button" type="button" aria-label="Fechar" (click)="close.emit()">
         <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
       </button>
     </header>
@@ -37,7 +37,7 @@
       </div>
 
       <div class="form-actions">
-        <button class="button-ghost" type="button">Cancelar</button>
+        <button class="button-ghost" type="button" (click)="close.emit()">Cancelar</button>
         <button class="button-primary" type="submit">Atribuir</button>
       </div>
     </form>

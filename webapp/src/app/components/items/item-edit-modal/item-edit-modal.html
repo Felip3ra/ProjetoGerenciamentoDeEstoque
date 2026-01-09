@@ -1,7 +1,7 @@
 <div class="modal-overlay" (click)="close.emit()">
   <div class="modal-card" (click)="$event.stopPropagation()">
     <header class="modal-header">
-      <h2>Novo Item</h2>
+      <h2>Editar Item</h2>
       <button class="icon-button" type="button" aria-label="Fechar" (click)="close.emit()">
         <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
       </button>
@@ -17,52 +17,53 @@
           <label>
             Categoria <span class="required">*</span>
           </label>
-          <input type="text" placeholder="Ex: Notebook, Monitor, Mouse" required />
+          <input type="text" value="Notebook" required />
         </div>
 
         <div>
           <label>
             Nome <span class="required">*</span>
           </label>
-          <input type="text" placeholder="Ex: MacBook Pro 16" required />
+          <input type="text" value="MacBook Pro 16" required />
         </div>
 
         <div>
           <label>Marca</label>
-          <input type="text" placeholder="Ex: Apple" />
+          <input type="text" value="Apple" />
         </div>
 
         <div>
           <label>Modelo</label>
-          <input type="text" placeholder="Ex: M1 Pro" />
+          <input type="text" value="M1 Pro" />
         </div>
 
         <div>
           <label>
             Número de Série <span class="required">*</span>
           </label>
-          <input type="text" placeholder="Ex: ABC123XYZ" required />
+          <input type="text" value="ABC123XYZ" required disabled />
+          <p class="hint">Número de série não pode ser alterado</p>
         </div>
 
         <div>
           <label>Patrimônio</label>
-          <input type="text" placeholder="Ex: PAT-001" />
+          <input type="text" value="PAT-001" />
         </div>
 
         <div class="full">
           <label>Descrição</label>
-          <textarea rows="3" placeholder="Informações adicionais sobre o item"></textarea>
+          <textarea rows="3">Notebook para liderança de projetos.</textarea>
         </div>
 
         <div>
           <label>Data de Compra</label>
-          <input type="date" />
+          <input type="date" value="2026-01-10" />
         </div>
       </div>
 
       <div class="form-actions">
         <button class="button-ghost" type="button" (click)="close.emit()">Cancelar</button>
-        <button class="button-primary" type="submit">Criar Item</button>
+        <button class="button-primary" type="submit">Salvar</button>
       </div>
     </form>
   </div>
