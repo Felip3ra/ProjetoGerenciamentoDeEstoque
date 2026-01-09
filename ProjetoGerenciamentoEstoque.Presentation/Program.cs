@@ -1,5 +1,10 @@
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using ProjetoGerenciamentoEstoque.Application.Repository;
+using ProjetoGerenciamentoEstoque.Application.Services;
 using ProjetoGerenciamentoEstoque.Infraestructure.Context;
+using ProjetoGerenciamentoEstoque.Infraestructure.PasswordHasher;
+using ProjetoGerenciamentoEstoque.Infraestructure.Repository;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -16,6 +21,12 @@ builder.Services.AddControllers();
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"))
 );
+
+builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(IService<>), typeof(Service<>));
+builder.Services.AddScoped<IPasswordHasher, PasswordHasher>();
 
 var app = builder.Build();
 

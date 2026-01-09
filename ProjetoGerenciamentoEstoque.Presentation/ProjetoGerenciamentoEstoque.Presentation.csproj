@@ -16,10 +16,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Controllers\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\ProjetoGerenciamentoEstoque.Application\ProjetoGerenciamentoEstoque.Application.csproj" />
     <ProjectReference Include="..\ProjetoGerenciamentoEstoque.Domain\ProjetoGerenciamentoEstoque.Domain.csproj" />
     <ProjectReference Include="..\ProjetoGerenciamentoEstoque.Infraestructure\ProjetoGerenciamentoEstoque.Infraestructure.csproj" />
