@@ -1,4 +1,5 @@
-﻿using ProjetoGerenciamentoEstoque.Application.Repository;
+﻿using Microsoft.EntityFrameworkCore;
+using ProjetoGerenciamentoEstoque.Application.Repository;
 using ProjetoGerenciamentoEstoque.Infraestructure.Context;
 using System;
 using System.Collections.Generic;
@@ -23,6 +24,18 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
             catch(Exception)
             {
                 return false;
+            }
+        }
+
+        public async Task<IEnumerable<T>> GetAllAsync()
+        {
+            try
+            {
+                return await _context.Set<T>().ToListAsync();
+            }
+            catch (Exception)
+            {
+                return null;
             }
         }
 

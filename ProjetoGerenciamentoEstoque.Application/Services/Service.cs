@@ -14,6 +14,13 @@ namespace ProjetoGerenciamentoEstoque.Application.Services
         }
         public async Task<bool> AddAsync(T entity) => await _repository.AddAsync(entity);
 
+        public async Task<IEnumerable<T>> GetAllAsync() => await _repository.GetAllAsync();
+
+        public Task<T> GetByIdAsync(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public async Task<bool> UpdateAsync(T entity) => await _repository.UpdateAsync(entity);
 
     }
