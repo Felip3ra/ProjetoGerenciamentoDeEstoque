@@ -1,6 +1,8 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authentication.BearerToken;
+using Microsoft.AspNetCore.Mvc;
 using ProjetoGerenciamentoEstoque.Application.Services;
 using ProjetoGerenciamentoEstoque.Domain.Models;
+using System.Security.Claims;
 
 namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
 {
@@ -23,7 +25,17 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
 
             if (await _userService.VerifyLogin(user))
             {
-                return Ok("Login realizado com sucesso");
+                var claimsPrincipal = new ClaimsPrincipal(
+                new ClaimsIdentity(
+                    new[]
+                    {
+                        new Claim(ClaimTypes.Name, user.Name),
+                        new Claim(ClaimTypes.Email, user.Email),
+                        new Claim(ClaimTypes.Role, user.Profile)
+                    },
+                    BearerTokenDefaults.AuthenticationScheme
+                ));
+                return SignIn(claimsPrincipal);
             }
 
             return Unauthorized("Credenciais inválidas");

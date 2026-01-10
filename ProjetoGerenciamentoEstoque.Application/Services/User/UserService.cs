@@ -2,6 +2,7 @@
 using ProjetoGerenciamentoEstoque.Domain.Models;
 using System;
 using System.Collections.Generic;
+using System.Security.Claims;
 using System.Text;
 
 namespace ProjetoGerenciamentoEstoque.Application.Services
@@ -14,7 +15,6 @@ namespace ProjetoGerenciamentoEstoque.Application.Services
             _userRepository = userRepository;
         }
         public async Task<bool> AddUserAsync(User user) => await _userRepository.AddUserAsync(user);
-        
 
         public async Task<bool> VerifyLogin(User user) => await _userRepository.VerifyLogin(user.Email, user.PasswordHash);
 
