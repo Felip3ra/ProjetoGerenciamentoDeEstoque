@@ -11,6 +11,7 @@ namespace ProjetoGerenciamentoEstoque.Domain.Models
         public string Email { get; set; }
         public Department Department { get; set; }
         public Status Status { get; set; }
+        public bool HasAccess { get; set; }
         public string PasswordHash { get; set; }
         public string Profile { get; set; }
         public DateTime CreatedAt { get; set; }

@@ -23,7 +23,19 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
         {
             try
             {
-                _passwordHasher.HashPassword(user.PasswordHash);
+                if (!user.HasAccess)
+                {
+                    user.PasswordHash = null;
+                }
+                else if (!string.IsNullOrWhiteSpace(user.PasswordHash))
+                {
+                    user.PasswordHash = _passwordHasher.HashPassword(user.PasswordHash);
+                }
+                else
+                {
+                    return false;
+                }
+
                 await _context.Users.AddAsync(user);
                 return true;
             }
@@ -37,9 +49,18 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(email) || string.IsNullOrWhiteSpace(password))
+                {
+                    return false;
+                }
+
                 User? userExists = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
-                if(userExists == null) return false;
-                bool passwordMatch = _passwordHasher.VerifyPassword(password, userExists.PasswordHash);
+                if (userExists == null || !userExists.HasAccess || string.IsNullOrWhiteSpace(userExists.PasswordHash))
+                {
+                    return false;
+                }
+
+                bool passwordMatch = _passwordHasher.VerifyPassword(userExists.PasswordHash, password);
                 if (!passwordMatch) return false;
                 return true;
             }

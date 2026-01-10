@@ -29,6 +29,7 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Context
                     .HasFilter("[Email] IS NOT NULL");
 
                 entity.HasIndex(u => u.Status);
+                entity.HasIndex(u => u.HasAccess);
                 entity.HasIndex(u => u.Profile);
             });
 
