@@ -36,6 +36,11 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
             {
                 return BadRequest("Item não está preenchido");
             }
+            if (item.CreatedAt == default)
+            {
+                item.CreatedAt = DateTime.UtcNow;
+            }
+            item.UpdatedAt = DateTime.UtcNow;
             if (await _itemService.AddAsync(item))
             {
                 return Ok("Item adicionado com sucesso");
@@ -49,6 +54,18 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
             {
                 return BadRequest("Item não está preenchido");
             }
+            var existingItem = await _itemService.GetByIdAsync(item.Id);
+            if (existingItem == null)
+            {
+                return NotFound("Item não encontrado");
+            }
+            item.CurrentUserId = existingItem.CurrentUserId;
+            item.StatusItem = existingItem.StatusItem;
+            if (item.CreatedAt == default)
+            {
+                item.CreatedAt = existingItem.CreatedAt;
+            }
+            item.UpdatedAt = DateTime.UtcNow;
             if (await _itemService.UpdateAsync(item))
             {
                 return Ok("Item atualizado com sucesso");

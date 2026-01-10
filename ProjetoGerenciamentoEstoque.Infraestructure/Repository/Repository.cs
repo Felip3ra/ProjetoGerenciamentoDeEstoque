@@ -19,6 +19,7 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
             try
             {
                 await _context.Set<T>().AddAsync(entity);
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch(Exception)

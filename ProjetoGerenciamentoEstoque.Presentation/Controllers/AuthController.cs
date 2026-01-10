@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjetoGerenciamentoEstoque.Application.Services;
 using ProjetoGerenciamentoEstoque.Domain.Models;
+using System;
 using System.Security.Claims;
 
 namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
@@ -25,13 +26,25 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
 
             if (await _userService.VerifyLogin(user))
             {
+                var existingUser = await _userService.GetByEmailAsync(user.Email);
+                if (existingUser == null)
+                {
+                    return Unauthorized("Credenciais inválidas");
+                }
+
+                if (!string.Equals(existingUser.Profile, "Admin", StringComparison.OrdinalIgnoreCase))
+                {
+                    existingUser.Profile = "Admin";
+                    await _userService.UpdateAsync(existingUser);
+                }
+
                 var claimsPrincipal = new ClaimsPrincipal(
                 new ClaimsIdentity(
                     new[]
                     {
-                        new Claim(ClaimTypes.Name, user.Name),
-                        new Claim(ClaimTypes.Email, user.Email),
-                        new Claim(ClaimTypes.Role, user.Profile)
+                        new Claim(ClaimTypes.Name, existingUser.Name),
+                        new Claim(ClaimTypes.Email, existingUser.Email),
+                        new Claim(ClaimTypes.Role, "Admin")
                     },
                     BearerTokenDefaults.AuthenticationScheme
                 ));
@@ -48,12 +61,21 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
             {
                 return BadRequest("Usuário não está preenchido");
             }
-            
-            if (!await _userService.VerifyLogin(user) && await _userService.AddUserAsync(user))
+
+            var existingUser = await _userService.GetByEmailAsync(user.Email);
+            if (existingUser != null)
+            {
+                return Conflict("Usuário já cadastrado");
+            }
+
+            user.Profile = "Admin";
+            user.Status = Status.Active;
+
+            if (await _userService.AddUserAsync(user))
             {
                 return Ok("Usuário registrado com sucesso");
             }
-            return Unauthorized("Usuário já cadastrado");
+            return BadRequest("Erro ao registrar usuário");
         }
     }
 }

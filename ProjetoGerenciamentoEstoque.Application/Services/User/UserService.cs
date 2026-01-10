@@ -18,5 +18,9 @@ namespace ProjetoGerenciamentoEstoque.Application.Services
 
         public async Task<bool> VerifyLogin(User user) => await _userRepository.VerifyLogin(user.Email, user.PasswordHash);
 
+        public async Task<User?> GetByEmailAsync(string email) => await _userRepository.GetByEmailAsync(email);
+
+        public async Task<bool> UpdateAsync(User user) => await _userRepository.UpdateAsync(user);
+
     }
 }

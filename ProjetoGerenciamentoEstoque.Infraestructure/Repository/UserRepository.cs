@@ -23,7 +23,7 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
         {
             try
             {
-                if (!user.HasAccess)
+                if (user.Status != Status.Active)
                 {
                     user.PasswordHash = null;
                 }
@@ -37,6 +37,7 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
                 }
 
                 await _context.Users.AddAsync(user);
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception)
@@ -55,13 +56,44 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
                 }
 
                 User? userExists = await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
-                if (userExists == null || !userExists.HasAccess || string.IsNullOrWhiteSpace(userExists.PasswordHash))
+                if (userExists == null || userExists.Status != Status.Active || string.IsNullOrWhiteSpace(userExists.PasswordHash))
                 {
                     return false;
                 }
 
                 bool passwordMatch = _passwordHasher.VerifyPassword(userExists.PasswordHash, password);
                 if (!passwordMatch) return false;
+                return true;
+            }
+            catch (Exception)
+            {
+                return false;
+            }
+        }
+
+        public async Task<User?> GetByEmailAsync(string email)
+        {
+            try
+            {
+                if (string.IsNullOrWhiteSpace(email))
+                {
+                    return null;
+                }
+
+                return await _context.Users.FirstOrDefaultAsync(x => x.Email == email);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
+        public async Task<bool> UpdateAsync(User user)
+        {
+            try
+            {
+                _context.Users.Update(user);
+                await _context.SaveChangesAsync();
                 return true;
             }
             catch (Exception)

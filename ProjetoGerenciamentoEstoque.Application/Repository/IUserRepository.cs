@@ -9,5 +9,7 @@ namespace ProjetoGerenciamentoEstoque.Application.Repository
     {
         Task<bool> VerifyLogin(string email, string password);
         Task<bool> AddUserAsync(User user);
+        Task<User?> GetByEmailAsync(string email);
+        Task<bool> UpdateAsync(User user);
     }
 }

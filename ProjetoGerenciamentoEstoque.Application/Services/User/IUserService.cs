@@ -10,5 +10,7 @@ namespace ProjetoGerenciamentoEstoque.Application.Services
     {
         Task<bool> AddUserAsync(User user);
         Task<bool> VerifyLogin(User user);
+        Task<User?> GetByEmailAsync(string email);
+        Task<bool> UpdateAsync(User user);
     }
 }
