@@ -1,0 +1,69 @@
+<div class="modal-overlay" (click)="close.emit()">
+  <div class="modal-card" (click)="$event.stopPropagation()">
+    <header class="modal-header">
+      <h2>Novo Item</h2>
+      <button class="icon-button" type="button" aria-label="Fechar" (click)="close.emit()">
+        <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
+      </button>
+    </header>
+
+    <form class="modal-body">
+      <div class="alert error-alert">
+        Erro ao salvar o item. Verifique os campos obrigatorios.
+      </div>
+
+      <div class="form-grid">
+        <div>
+          <label>
+            Categoria <span class="required">*</span>
+          </label>
+          <input type="text" placeholder="Ex: Notebook, Monitor, Mouse" required />
+        </div>
+
+        <div>
+          <label>
+            Nome <span class="required">*</span>
+          </label>
+          <input type="text" placeholder="Ex: MacBook Pro 16" required />
+        </div>
+
+        <div>
+          <label>Marca</label>
+          <input type="text" placeholder="Ex: Apple" />
+        </div>
+
+        <div>
+          <label>Modelo</label>
+          <input type="text" placeholder="Ex: M1 Pro" />
+        </div>
+
+        <div>
+          <label>
+            Número de Série <span class="required">*</span>
+          </label>
+          <input type="text" placeholder="Ex: ABC123XYZ" required />
+        </div>
+
+        <div>
+          <label>Patrimônio</label>
+          <input type="text" placeholder="Ex: PAT-001" />
+        </div>
+
+        <div class="full">
+          <label>Descrição</label>
+          <textarea rows="3" placeholder="Informações adicionais sobre o item"></textarea>
+        </div>
+
+        <div>
+          <label>Data de Compra</label>
+          <input type="date" />
+        </div>
+      </div>
+
+      <div class="form-actions">
+        <button class="button-ghost" type="button" (click)="close.emit()">Cancelar</button>
+        <button class="button-primary" type="submit">Criar Item</button>
+      </div>
+    </form>
+  </div>
+</div>
