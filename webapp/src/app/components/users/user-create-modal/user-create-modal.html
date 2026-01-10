@@ -1,17 +1,13 @@
-<div class="modal-overlay" (click)="close.emit()">
+﻿<div class="modal-overlay" (click)="close.emit()">
   <div class="modal-card" (click)="$event.stopPropagation()">
     <header class="modal-header">
-      <h2>Novo Usuario</h2>
+      <h2>Nova Pessoa</h2>
       <button class="icon-button" type="button" aria-label="Fechar" (click)="close.emit()">
         <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
       </button>
     </header>
 
     <form class="modal-body">
-      <div class="alert error-alert">
-        Senha e obrigatoria para novo usuario.
-      </div>
-
       <div class="form-grid">
         <div>
           <label>
@@ -29,22 +25,6 @@
           <label>Setor</label>
           <input type="text" placeholder="Ex: Operacoes" />
         </div>
-
-        <div>
-          <label>Perfil</label>
-          <select>
-            <option>Leitor</option>
-            <option>Operador</option>
-            <option>Admin</option>
-          </select>
-        </div>
-
-        <div class="full">
-          <label>
-            Senha <span class="required">*</span>
-          </label>
-          <input type="password" required />
-        </div>
       </div>
 
       <div class="form-actions">
@@ -54,3 +34,5 @@
     </form>
   </div>
 </div>
+
+

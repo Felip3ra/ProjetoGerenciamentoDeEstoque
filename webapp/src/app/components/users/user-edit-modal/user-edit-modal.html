@@ -1,7 +1,7 @@
-<div class="modal-overlay" (click)="close.emit()">
+﻿<div class="modal-overlay" (click)="close.emit()">
   <div class="modal-card" (click)="$event.stopPropagation()">
     <header class="modal-header">
-      <h2>Editar Usuario</h2>
+      <h2>Editar Pessoa</h2>
       <button class="icon-button" type="button" aria-label="Fechar" (click)="close.emit()">
         <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
       </button>
@@ -9,7 +9,7 @@
 
     <form class="modal-body">
       <div class="alert error-alert">
-        Erro ao salvar o usuario. Verifique os campos obrigatorios.
+        Erro ao salvar a pessoa. Verifique os campos obrigatorios.
       </div>
 
       <div class="form-grid">
@@ -30,15 +30,6 @@
           <input type="text" value="Operacoes" />
         </div>
 
-        <div>
-          <label>Perfil</label>
-          <select>
-            <option>Leitor</option>
-            <option selected>Operador</option>
-            <option>Admin</option>
-          </select>
-        </div>
-
         <div class="full">
           <label>Status</label>
           <select>
@@ -55,3 +46,7 @@
     </form>
   </div>
 </div>
+
+
+
+

@@ -1,4 +1,4 @@
-<div class="modal-overlay" (click)="close.emit()">
+﻿<div class="modal-overlay" (click)="close.emit()">
   <div class="modal-card" (click)="$event.stopPropagation()">
     <header class="modal-header">
       <h3>Atribuir Item</h3>
@@ -11,29 +11,28 @@
       <div class="item-summary">
         <p class="label">Item:</p>
         <p class="value">MacBook Pro 16"</p>
-        <p class="meta">Nº 0000001</p>
-        <p class="meta">Atualmente com: Letícia Silva</p>
+        <p class="meta">No. 0000001</p>
+        <p class="meta">Atualmente com: Leticia Silva</p>
       </div>
 
       <div class="alert error-alert">
-        Selecione um usuário válido.
+        Selecione uma pessoa valida.
       </div>
-
       <div>
         <label>
           Atribuir para <span class="required">*</span>
         </label>
         <select required>
-          <option value="">Selecione um usuário</option>
-          <option>Letícia Silva (Operações)</option>
-          <option>João Lima (TI)</option>
-          <option>Fernanda Alves (Admin)</option>
+          <option value="">Selecione uma pessoa</option>
+          <option>Leticia Silva (Operacoes)</option>
+          <option>Joao Lima (TI)</option>
+          <option>Fernanda Alves (TI)</option>
         </select>
       </div>
 
       <div>
-        <label>Observação</label>
-        <textarea rows="3" placeholder="Observações sobre esta movimentação"></textarea>
+        <label>Observacao</label>
+        <textarea rows="3" placeholder="Observacoes sobre esta movimentacao"></textarea>
       </div>
 
       <div class="form-actions">
@@ -43,3 +42,5 @@
     </form>
   </div>
 </div>
+
+
