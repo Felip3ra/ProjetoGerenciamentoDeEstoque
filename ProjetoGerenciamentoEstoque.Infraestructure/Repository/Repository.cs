@@ -39,6 +39,20 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
             }
         }
 
+        public async Task<T> GetByIdAsync(int id)
+        {
+            try
+            {
+                return await _context.Set<T>()
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => EF.Property<int>(x, "Id") == id);
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
         public async Task<bool> UpdateAsync(T entity)
         {
             try

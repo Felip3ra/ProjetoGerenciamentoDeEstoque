@@ -9,6 +9,7 @@ namespace ProjetoGerenciamentoEstoque.Application.Repository
         Task<bool> AddAsync(T entity);
         Task<bool> UpdateAsync(T entity);
         Task<IEnumerable<T>> GetAllAsync();
+        Task<T> GetByIdAsync(int id);
 
     }
 }
