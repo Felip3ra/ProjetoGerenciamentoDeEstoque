@@ -79,6 +79,12 @@ select:focus {
   color: #ef4444;
 }
 
+.form-hint {
+  margin-top: 0.35rem;
+  font-size: 0.75rem;
+  color: #6b7280;
+}
+
 .form-actions {
   display: flex;
   justify-content: flex-end;

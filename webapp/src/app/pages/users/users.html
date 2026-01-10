@@ -1,12 +1,12 @@
 ﻿<div class="page">
   <header class="page-header">
     <div>
-      <h1>Pessoas</h1>
-      <p class="page-subtitle">12 pessoa(s) encontrado(s)</p>
+      <h1>Usuarios</h1>
+      <p class="page-subtitle">12 usuario(s) encontrado(s)</p>
     </div>
     <button class="primary-button" type="button" (click)="showUserCreate()">
       <lucide-icon [name]="Plus" class="button-icon"></lucide-icon>
-      Nova Pessoa
+      Novo Usuario
     </button>
   </header>
 
@@ -25,6 +25,8 @@
             <th>Nome</th>
             <th>Email</th>
             <th>Setor</th>
+            <th>Perfil</th>
+            <th>Acesso</th>
             <th>Status</th>
             <th>Itens</th>
             <th class="align-right">Acoes</th>
@@ -32,9 +34,11 @@
         </thead>
         <tbody>
           <tr>
-            <td>Letícia Martins</td>
+            <td>Leticia Martins</td>
             <td>leticia@empresa.com</td>
-            <td>Operações</td>
+            <td>Operacoes</td>
+            <td><span class="badge badge-purple">ADMIN</span></td>
+            <td><span class="badge badge-green">Com acesso</span></td>
             <td><span class="badge badge-green">Ativo</span></td>
             <td>
               <button class="link-button" type="button">
@@ -54,9 +58,11 @@
             </td>
           </tr>
           <tr>
-            <td>João Lima</td>
+            <td>Joao Lima</td>
             <td>joao@empresa.com</td>
             <td>Administrativo</td>
+            <td><span class="badge badge-blue">OPERADOR</span></td>
+            <td><span class="badge badge-green">Com acesso</span></td>
             <td><span class="badge badge-green">Ativo</span></td>
             <td><span class="muted">0</span></td>
             <td class="align-right">
@@ -74,6 +80,8 @@
             <td>Fernanda Alves</td>
             <td>fernanda@empresa.com</td>
             <td>TI</td>
+            <td><span class="badge badge-gray">COLABORADOR</span></td>
+            <td><span class="badge badge-gray">Sem acesso</span></td>
             <td><span class="badge badge-gray">Inativo</span></td>
             <td>
               <button class="link-button" type="button">
@@ -100,5 +108,3 @@
 
 <app-user-create-modal *ngIf="OpenUserCreate()" (close)="OpenUserCreate.set(false)"></app-user-create-modal>
 <app-user-edit-modal *ngIf="OpenUserEdit()" (close)="OpenUserEdit.set(false)"></app-user-edit-modal>
-
-

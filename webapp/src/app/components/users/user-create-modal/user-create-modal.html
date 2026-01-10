@@ -1,7 +1,7 @@
 ﻿<div class="modal-overlay" (click)="close.emit()">
   <div class="modal-card" (click)="$event.stopPropagation()">
     <header class="modal-header">
-      <h2>Nova Pessoa</h2>
+      <h2>Novo Usuario</h2>
       <button class="icon-button" type="button" aria-label="Fechar" (click)="close.emit()">
         <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
       </button>
@@ -25,6 +25,27 @@
           <label>Setor</label>
           <input type="text" placeholder="Ex: Operacoes" />
         </div>
+
+        <div>
+          <label>Acesso ao sistema</label>
+          <select (change)="setAccess($event)">
+            <option value="com" selected>Com acesso</option>
+            <option value="sem">Sem acesso</option>
+          </select>
+        </div>
+
+        <div *ngIf="hasAccess">
+          <label>Perfil</label>
+          <select>
+            <option>Operador</option>
+            <option>Admin</option>
+          </select>
+        </div>
+
+        <div class="full" *ngIf="hasAccess">
+          <label>Senha</label>
+          <input type="password" placeholder="Defina a senha de acesso" />
+        </div>
       </div>
 
       <div class="form-actions">
@@ -34,5 +55,3 @@
     </form>
   </div>
 </div>
-
-

@@ -1,7 +1,7 @@
 ﻿<div class="modal-overlay" (click)="close.emit()">
   <div class="modal-card" (click)="$event.stopPropagation()">
     <header class="modal-header">
-      <h2>Editar Pessoa</h2>
+      <h2>Editar Usuario</h2>
       <button class="icon-button" type="button" aria-label="Fechar" (click)="close.emit()">
         <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
       </button>
@@ -9,7 +9,7 @@
 
     <form class="modal-body">
       <div class="alert error-alert">
-        Erro ao salvar a pessoa. Verifique os campos obrigatorios.
+        Erro ao salvar o usuario. Verifique os campos obrigatorios.
       </div>
 
       <div class="form-grid">
@@ -30,12 +30,34 @@
           <input type="text" value="Operacoes" />
         </div>
 
+        <div>
+          <label>Acesso ao sistema</label>
+          <select (change)="setAccess($event)">
+            <option value="com" selected>Com acesso</option>
+            <option value="sem">Sem acesso</option>
+          </select>
+        </div>
+
+        <div *ngIf="hasAccess">
+          <label>Perfil</label>
+          <select>
+            <option>Operador</option>
+            <option selected>Admin</option>
+          </select>
+        </div>
+
         <div class="full">
           <label>Status</label>
           <select>
             <option selected>Ativo</option>
             <option>Inativo</option>
           </select>
+        </div>
+
+        <div class="full" *ngIf="hasAccess">
+          <label>Senha (opcional)</label>
+          <input type="password" placeholder="Nova senha" />
+          <p class="form-hint">Deixe em branco para manter a senha atual.</p>
         </div>
       </div>
 
@@ -46,7 +68,3 @@
     </form>
   </div>
 </div>
-
-
-
-
