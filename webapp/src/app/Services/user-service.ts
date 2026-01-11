@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { buildApiUrl } from './api-base';
 import { Injectable } from '@angular/core';
-import { User } from '../interfaces/user';
+import { UserLogin } from '../interfaces/user';
 import { Observable, tap } from 'rxjs';
 import { BearerTokenResponse } from '../interfaces/BearerTokenResponse';
 
@@ -13,7 +13,7 @@ export class UserService {
 
   constructor(private http: HttpClient){}
 
-  login(payload: User): Observable<BearerTokenResponse> {
+  login(payload: UserLogin): Observable<BearerTokenResponse> {
     return this.http.post<BearerTokenResponse>(`${this.baseUrl}/login`, payload).pipe(
       tap((res) => localStorage.setItem('accessToken', res.accessToken))
     );

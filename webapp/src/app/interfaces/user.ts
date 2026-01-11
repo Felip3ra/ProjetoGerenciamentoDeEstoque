@@ -17,3 +17,8 @@ export interface User {
   movementsFrom?: Movement[];
   movementsTo?: Movement[];
 }
+
+export interface UserLogin {
+  email: string;
+  passwordHash: string;
+}
