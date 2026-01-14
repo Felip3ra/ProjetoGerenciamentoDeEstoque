@@ -22,5 +22,7 @@ namespace ProjetoGerenciamentoEstoque.Application.Services
 
         public async Task<bool> UpdateAsync(User user) => await _userRepository.UpdateAsync(user);
 
+        public async Task<IEnumerable<User>> GetUsersAsync() => await _userRepository.GetAllUsers();
+        
     }
 }

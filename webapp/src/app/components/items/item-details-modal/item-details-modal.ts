@@ -1,5 +1,6 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { Calendar, FileText, Hash, History, LucideAngularModule, Package, User, X } from 'lucide-angular';
+import { Item } from '../../../interfaces/item';
 
 @Component({
   selector: 'app-item-details-modal',
@@ -16,5 +17,6 @@ export class ItemDetailsModal {
   readonly CalendarIcon = Calendar;
   readonly UserIcon = User;
   readonly HistoryIcon = History;
+  @Input() item: Item | null = null;
   @Output() close = new EventEmitter<void>();
 }

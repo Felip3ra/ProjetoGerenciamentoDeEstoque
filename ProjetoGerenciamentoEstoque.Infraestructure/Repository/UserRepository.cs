@@ -101,5 +101,19 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
                 return false;
             }
         }
+
+        public async Task<IEnumerable<User>> GetAllUsers()
+        {
+            try
+            {
+                return await _context.Users.Include(x => x.Items).ToListAsync();
+                
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+        }
+
     }
 }

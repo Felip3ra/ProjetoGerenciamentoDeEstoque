@@ -1,7 +1,7 @@
 ﻿public enum Department
 {
-    Requirements,
-    Development,
-    QA,
-    Operations
+    Requirements = 1,
+    Development = 2,
+    QA = 3,
+    Operations = 4
 }

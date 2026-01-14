@@ -6,15 +6,14 @@ import { ItemsPage } from './pages/items/items';
 import { UsersPage } from './pages/users/users';
 import { MovementsPage } from './pages/movements/movements';
 import { ReportsPage } from './pages/reports/reports';
+import { authGuard } from './Services/Auth/auth-guard';
 
 export const routes: Routes = [
-  {
-    path: 'login',
-    component: Login,
-  },
+  { path: 'login', component: Login },
   {
     path: '',
     component: MainLayout,
+    canActivate: [authGuard],
     children: [
       { path: 'dashboard', component: DashboardPage },
       { path: 'items', component: ItemsPage },
@@ -24,5 +23,6 @@ export const routes: Routes = [
       { path: '', pathMatch: 'full', redirectTo: 'dashboard' },
     ],
   },
-  { path: '**', redirectTo: 'dashboard' },
+  { path: '**', redirectTo: 'login' },
 ];
+

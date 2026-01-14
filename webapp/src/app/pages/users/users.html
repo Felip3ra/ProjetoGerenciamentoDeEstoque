@@ -1,19 +1,26 @@
 ﻿<div class="page">
   <header class="page-header">
     <div>
-      <h1>Usuarios</h1>
-      <p class="page-subtitle">12 usuario(s) encontrado(s)</p>
+      <h1>Usuários</h1>
+      <p class="page-subtitle">{{FilteredUsers().length}} usuário(s) encontrado(s)</p>
     </div>
     <button class="primary-button" type="button" (click)="showUserCreate()">
       <lucide-icon [name]="Plus" class="button-icon"></lucide-icon>
-      Novo Usuario
+      Novo Usuário
     </button>
   </header>
 
-  <section class="card search-card">
-    <div class="search-field">
-      <lucide-icon [name]="Search" class="search-icon" aria-hidden="true"></lucide-icon>
-      <input type="text" placeholder="Buscar por nome, email ou setor..." />
+  <section class="card filter-card">
+    <div class="filter-row">
+      <div class="search-field">
+        <lucide-icon [name]="Search" class="search-icon" aria-hidden="true"></lucide-icon>
+        <input
+          type="text"
+          placeholder="Buscar por nome, email ou setor..."
+          (input)="SearchTerm.set($any($event.target).value)"
+        />
+      </div>
+      <button class="outline-button" type="button" (click)="clearFilters()">Limpar filtros</button>
     </div>
   </section>
 
@@ -29,82 +36,55 @@
             <th>Acesso</th>
             <th>Status</th>
             <th>Itens</th>
-            <th class="align-right">Acoes</th>
+            <th class="align-right">Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
-            <td>Leticia Martins</td>
-            <td>leticia@empresa.com</td>
-            <td>Operacoes</td>
-            <td><span class="badge badge-purple">ADMIN</span></td>
-            <td><span class="badge badge-green">Com acesso</span></td>
-            <td><span class="badge badge-green">Ativo</span></td>
-            <td>
-              <button class="link-button" type="button">
-                <lucide-icon [name]="Package" class="link-icon"></lucide-icon>
-                3 itens
-              </button>
-            </td>
-            <td class="align-right">
-              <div class="action-row">
-                <button class="icon-button" type="button" title="Editar" (click)="showUserEdit()">
-                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
+          @for (user of FilteredUsers(); track user.id) {
+
+            <tr>
+              <td>{{user.name}}</td>
+              <td>{{user.email}}</td>
+              <td>
+                <span [ngClass]="['badge', departmentClass(user.department)]">
+                  {{departmentLabel(user.department)}}
+                </span>
+              </td>
+              <td><span class="badge badge-purple">{{user.profile}}</span></td>
+              <td>
+                <span class="badge" [class.badge-green]="user.hasAccess" [class.badge-gray]="!user.hasAccess">
+                  {{accessLabel(user.hasAccess)}}
+                </span>
+              </td>
+              <td>
+                <span class="badge" [class.badge-green]="isActiveStatus(user.status)" [class.badge-gray]="!isActiveStatus(user.status)">
+                  {{statusLabel(user.status)}}
+                </span>
+              </td>
+              <td>
+                <button class="link-button" type="button">
+                  <lucide-icon [name]="Package" class="link-icon"></lucide-icon>
+                  {{user.items?.length}} itens
                 </button>
-                <button class="icon-button" type="button" title="Deletar">
-                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Joao Lima</td>
-            <td>joao@empresa.com</td>
-            <td>Administrativo</td>
-            <td><span class="badge badge-blue">OPERADOR</span></td>
-            <td><span class="badge badge-green">Com acesso</span></td>
-            <td><span class="badge badge-green">Ativo</span></td>
-            <td><span class="muted">0</span></td>
-            <td class="align-right">
-              <div class="action-row">
-                <button class="icon-button" type="button" title="Editar" (click)="showUserEdit()">
-                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
-                </button>
-                <button class="icon-button" type="button" title="Deletar">
-                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>Fernanda Alves</td>
-            <td>fernanda@empresa.com</td>
-            <td>TI</td>
-            <td><span class="badge badge-gray">COLABORADOR</span></td>
-            <td><span class="badge badge-gray">Sem acesso</span></td>
-            <td><span class="badge badge-gray">Inativo</span></td>
-            <td>
-              <button class="link-button" type="button">
-                <lucide-icon [name]="Package" class="link-icon"></lucide-icon>
-                2 itens
-              </button>
-            </td>
-            <td class="align-right">
-              <div class="action-row">
-                <button class="icon-button" type="button" title="Editar" (click)="showUserEdit()">
-                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
-                </button>
-                <button class="icon-button" type="button" title="Deletar">
-                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
-                </button>
-              </div>
-            </td>
-          </tr>
+              </td>
+              <td class="align-right">
+                <div class="action-row">
+                  <button class="icon-button" type="button" title="Editar" (click)="showUserEdit(user)">
+                    <lucide-icon [name]="Edit" class="icon"></lucide-icon>
+                  </button>
+                  <button class="icon-button" type="button" title="Deletar">
+                    <lucide-icon [name]="Trash" class="icon"></lucide-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          }
+         
         </tbody>
       </table>
     </div>
   </section>
 </div>
 
-<app-user-create-modal *ngIf="OpenUserCreate()" (close)="OpenUserCreate.set(false)"></app-user-create-modal>
-<app-user-edit-modal *ngIf="OpenUserEdit()" (close)="OpenUserEdit.set(false)"></app-user-edit-modal>
+<app-user-create-modal *ngIf="OpenUserCreate()" (saved)="reloadUsers()" (close)="OpenUserCreate.set(false)"></app-user-create-modal>
+<app-user-edit-modal *ngIf="OpenUserEdit()" [user]="SelectedUser()" (saved)="reloadUsers()" (close)="OpenUserEdit.set(false); SelectedUser.set(null)"></app-user-edit-modal>

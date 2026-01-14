@@ -1,16 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ProjetoGerenciamentoEstoque.Application.Repository;
 using ProjetoGerenciamentoEstoque.Infraestructure.Context;
-using System;
-using System.Collections.Generic;
-using System.Text;
 
 namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
 {
-    public class Repository<T> : IRepository<T> where T : class
+    public class Repository<T> : IRepository<T> where T : class 
     {
         private readonly AppDbContext _context;
-        public Repository(AppDbContext context) 
+        public Repository(AppDbContext context)
         {
             _context = context;
         }
@@ -22,7 +19,7 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
                 await _context.SaveChangesAsync();
                 return true;
             }
-            catch(Exception)
+            catch (Exception)
             {
                 return false;
             }

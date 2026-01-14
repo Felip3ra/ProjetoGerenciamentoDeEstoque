@@ -1,69 +1,87 @@
 ﻿<div class="modal-overlay" (click)="close.emit()">
   <div class="modal-card" (click)="$event.stopPropagation()">
     <header class="modal-header">
-      <h2>Editar Usuario</h2>
+      <h2>Editar Usuário</h2>
       <button class="icon-button" type="button" aria-label="Fechar" (click)="close.emit()">
         <lucide-icon [name]="CloseIcon" class="icon"></lucide-icon>
       </button>
     </header>
 
-    <form class="modal-body">
-      <div class="alert error-alert">
-        Erro ao salvar o usuario. Verifique os campos obrigatorios.
-      </div>
+    <form class="modal-body" [formGroup]="form" (ngSubmit)="onSubmit()">
+      @if (errorMessage) {
+        <div class="alert error-alert">
+          {{ errorMessage }}
+        </div>
+      }
 
       <div class="form-grid">
         <div>
           <label>
             Nome <span class="required">*</span>
           </label>
-          <input type="text" value="Leticia Martins" required />
+          <input type="text" formControlName="name" required />
         </div>
 
         <div>
           <label>Email</label>
-          <input type="email" value="leticia@empresa.com" />
+          <input type="email" formControlName="email" />
         </div>
 
         <div>
           <label>Setor</label>
-          <input type="text" value="Operacoes" />
+          <select formControlName="department">
+            @for (department of departments; track department) {
+              <option [value]="department">{{ department }}</option>
+            }
+          </select>
         </div>
 
         <div>
           <label>Acesso ao sistema</label>
           <select (change)="setAccess($event)">
-            <option value="com" selected>Com acesso</option>
-            <option value="sem">Sem acesso</option>
+            <option value="com" [selected]="hasAccess">Com acesso</option>
+            <option value="sem" [selected]="!hasAccess">Sem acesso</option>
           </select>
         </div>
 
         <div *ngIf="hasAccess">
           <label>Perfil</label>
-          <select>
-            <option>Operador</option>
-            <option selected>Admin</option>
+          <select formControlName="profile">
+            <option value="Operador">Operador</option>
+            <option value="Admin">Admin</option>
           </select>
         </div>
 
         <div class="full">
           <label>Status</label>
-          <select>
-            <option selected>Ativo</option>
-            <option>Inativo</option>
+          <select formControlName="status">
+            @for (status of statuses; track status) {
+              <option [value]="status">
+                {{ status === 'Active' ? 'Ativo' : 'Inativo' }}
+              </option>
+            }
           </select>
         </div>
 
         <div class="full" *ngIf="hasAccess">
           <label>Senha (opcional)</label>
-          <input type="password" placeholder="Nova senha" />
+          <input type="password" placeholder="Nova senha" formControlName="passwordHash" />
           <p class="form-hint">Deixe em branco para manter a senha atual.</p>
         </div>
       </div>
 
       <div class="form-actions">
         <button class="button-ghost" type="button" (click)="close.emit()">Cancelar</button>
-        <button class="button-primary" type="submit">Salvar</button>
+        <button class="button-primary" type="submit" [disabled]="isSubmitting || form.invalid">
+          <span class="button-content">
+            @if (isSubmitting) {
+              <span class="button-spinner" aria-hidden="true"></span>
+              Aguarde...
+            } @else {
+              Salvar
+            }
+          </span>
+        </button>
       </div>
     </form>
   </div>

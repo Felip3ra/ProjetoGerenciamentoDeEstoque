@@ -33,7 +33,10 @@ builder.Services.AddSwaggerGen(options =>
 });
 
 builder.Services.AddAuthentication()
-                .AddBearerToken();
+                .AddBearerToken(options =>
+                {
+                    options.BearerTokenExpiration = TimeSpan.FromMinutes(60);
+                });
 
 builder.Services.AddAuthorization();
 
@@ -61,6 +64,11 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseDefaultFiles();
+app.UseStaticFiles();
+
+app.MapFallbackToFile("index.html");
 
 app.MapControllers();
 

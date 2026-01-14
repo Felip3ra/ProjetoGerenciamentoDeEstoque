@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjetoGerenciamentoEstoque.Application.Services;
 using ProjetoGerenciamentoEstoque.Domain.Models;
 
@@ -14,13 +15,14 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
         {
             _service = service;
         }
-
+        [Authorize]
         [HttpGet("GetAllMovements")]
         public async Task<IActionResult> GetAllMovements()
         {
             var items = await _service.GetAllAsync();
             return Ok(items);
         }
+        [Authorize]
         [HttpGet("GetMovementById/{id}")]
         public async Task<IActionResult> GetMovementById(int id)
         {
@@ -31,6 +33,7 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
             }
             return Ok(item);
         }
+        [Authorize]
         [HttpPost("AddMovement")]
         public async Task<IActionResult> AddMovement(Movement movement)
         {
@@ -44,6 +47,7 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
             }
             return BadRequest("Erro ao adicionar o Movimento");
         }
+        [Authorize]
         [HttpPut("UpdateMovement")]
         public async Task<IActionResult> UpdateMovement(Movement movement)
         {

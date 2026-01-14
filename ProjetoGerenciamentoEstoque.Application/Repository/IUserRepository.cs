@@ -11,5 +11,6 @@ namespace ProjetoGerenciamentoEstoque.Application.Repository
         Task<bool> AddUserAsync(User user);
         Task<User?> GetByEmailAsync(string email);
         Task<bool> UpdateAsync(User user);
+        Task<IEnumerable<User>> GetAllUsers();
     }
 }

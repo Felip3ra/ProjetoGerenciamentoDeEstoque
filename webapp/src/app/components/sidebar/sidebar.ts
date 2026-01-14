@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { RouterModule } from '@angular/router';
-import { Activity, BarChart3, LayoutDashboard, LucideAngularModule, Package, Users } from 'lucide-angular';
+import { Activity, ChartColumn, LayoutDashboard, LucideAngularModule, Package, Users } from 'lucide-angular';
 
 @Component({
   selector: 'app-sidebar',
@@ -14,5 +14,5 @@ export class Sidebar {
   readonly Package = Package;
   readonly Users = Users;
   readonly Movements = Activity;
-  readonly Reports = BarChart3;
+  readonly Reports = ChartColumn;
 }

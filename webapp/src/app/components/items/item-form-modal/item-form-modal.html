@@ -7,62 +7,73 @@
       </button>
     </header>
 
-    <form class="modal-body">
-      <div class="alert error-alert">
-        Erro ao salvar o item. Verifique os campos obrigatorios.
-      </div>
+    <form class="modal-body" [formGroup]="form" (ngSubmit)="onSubmit()">
+      @if (errorMessage) {
+        <div class="alert error-alert">
+          {{ errorMessage }}
+        </div>
+      }
 
       <div class="form-grid">
         <div>
           <label>
             Categoria <span class="required">*</span>
           </label>
-          <input type="text" placeholder="Ex: Notebook, Monitor, Mouse" required />
+          <input type="text" placeholder="Ex: Notebook, Monitor, Mouse" formControlName="category" required />
         </div>
 
         <div>
           <label>
             Nome <span class="required">*</span>
           </label>
-          <input type="text" placeholder="Ex: MacBook Pro 16" required />
+          <input type="text" placeholder="Ex: MacBook Pro 16" formControlName="name" required />
         </div>
 
         <div>
           <label>Marca</label>
-          <input type="text" placeholder="Ex: Apple" />
+          <input type="text" placeholder="Ex: Apple" formControlName="brand" />
         </div>
 
         <div>
           <label>Modelo</label>
-          <input type="text" placeholder="Ex: M1 Pro" />
+          <input type="text" placeholder="Ex: M1 Pro" formControlName="model" />
         </div>
 
         <div>
           <label>
             Número de Série <span class="required">*</span>
           </label>
-          <input type="text" placeholder="Ex: ABC123XYZ" required />
+          <input type="text" placeholder="Ex: ABC123XYZ" formControlName="serialNumber" required />
         </div>
 
         <div>
           <label>Patrimônio</label>
-          <input type="text" placeholder="Ex: PAT-001" />
+          <input type="text" placeholder="Ex: PAT-001" formControlName="patrimonyNumber" />
         </div>
 
         <div class="full">
           <label>Descrição</label>
-          <textarea rows="3" placeholder="Informações adicionais sobre o item"></textarea>
+          <textarea rows="3" placeholder="Informações adicionais sobre o item" formControlName="description"></textarea>
         </div>
 
         <div>
           <label>Data de Compra</label>
-          <input type="date" />
+          <input type="date" formControlName="purchaseDate" />
         </div>
       </div>
 
       <div class="form-actions">
         <button class="button-ghost" type="button" (click)="close.emit()">Cancelar</button>
-        <button class="button-primary" type="submit">Criar Item</button>
+        <button class="button-primary" type="submit" [disabled]="isSubmitting || form.invalid">
+          <span class="button-content">
+            @if (isSubmitting) {
+              <span class="button-spinner" aria-hidden="true"></span>
+              Aguarde...
+            } @else {
+              Criar Item
+            }
+          </span>
+        </button>
       </div>
     </form>
   </div>

@@ -12,13 +12,14 @@
         <h1 class="login-title">Sistema de Gestão de Estoque</h1>
         <p class="login-subtitle">Faça login para continuar</p>
 
-        <form class="login-form">
+        <form class="login-form" [formGroup]="loginForm" (ngSubmit)="onSubmit()">
           <div>
             <label class="login-label">Email</label>
             <input
               type="email"
               placeholder="Digite seu e-mail"
               class="login-input"
+              formControlName="email"
             />
           </div>
 
@@ -28,6 +29,7 @@
               type="password"
               placeholder="Digite sua senha"
               class="login-input"
+              formControlName="senha"
             />
           </div>
 
@@ -36,8 +38,16 @@
           <button
             type="submit"
             class="login-submit"
+            [disabled]="isSubmitting() || loginForm.invalid"
           >
-            Entrar
+            <span class="button-content">
+              @if (isSubmitting()) {
+                <span class="button-spinner" aria-hidden="true"></span>
+                Aguarde...
+              } @else {
+                Entrar
+              }
+            </span>
           </button>
         </form>
 

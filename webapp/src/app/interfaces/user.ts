@@ -7,8 +7,8 @@ export interface User {
   id: number;
   name: string;
   email: string;
-  department: Department;
-  status: Status;
+  department: Department | number;
+  status: Status | number;
   hasAccess: boolean;
   passwordHash: string;
   profile: string;
@@ -21,4 +21,12 @@ export interface User {
 export interface UserLogin {
   email: string;
   passwordHash: string;
+}
+
+export interface UserRegister {
+  name: string;
+  email: string;
+  passwordHash: string;
+  department: Department | number;
+  hasAccess: boolean;
 }

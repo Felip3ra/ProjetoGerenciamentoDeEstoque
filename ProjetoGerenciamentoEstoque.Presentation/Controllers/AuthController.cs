@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using ProjetoGerenciamentoEstoque.Application.Services;
 using ProjetoGerenciamentoEstoque.Domain.Models;
+using ProjetoGerenciamentoEstoque.Presentation.Contracts;
 using System;
 using System.Security.Claims;
 
@@ -17,16 +18,22 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
             _userService = userService;
         }
         [HttpPost("Login")]
-        public async Task<IActionResult> Login(User user)
+        public async Task<IActionResult> Login(LoginRequest request)
         {
-            if (user == null)
+            if (request == null)
             {
                 return BadRequest("Usuário não está preenchido");
             }
 
-            if (await _userService.VerifyLogin(user))
+            var loginUser = new User
             {
-                var existingUser = await _userService.GetByEmailAsync(user.Email);
+                Email = request.Email,
+                PasswordHash = request.PasswordHash
+            };
+
+            if (await _userService.VerifyLogin(loginUser))
+            {
+                var existingUser = await _userService.GetByEmailAsync(request.Email);
                 if (existingUser == null)
                 {
                     return Unauthorized("Credenciais inválidas");
@@ -55,21 +62,30 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
         }
 
         [HttpPost("Register")]
-        public async Task<IActionResult> Register(User user)
+        public async Task<IActionResult> Register(RegisterRequest request)
         {
-            if (user == null)
+            if (request == null)
             {
                 return BadRequest("Usuário não está preenchido");
             }
 
-            var existingUser = await _userService.GetByEmailAsync(user.Email);
+            var existingUser = await _userService.GetByEmailAsync(request.Email);
             if (existingUser != null)
             {
                 return Conflict("Usuário já cadastrado");
             }
 
-            user.Profile = "Admin";
-            user.Status = Status.Active;
+            var user = new User
+            {
+                Name = request.Name,
+                Email = request.Email,
+                PasswordHash = request.PasswordHash,
+                Department = request.Department,
+                HasAccess = request.HasAccess,
+                Profile = "Admin",
+                Status = Status.Active,
+                CreatedAt = DateTime.UtcNow
+            };
 
             if (await _userService.AddUserAsync(user))
             {

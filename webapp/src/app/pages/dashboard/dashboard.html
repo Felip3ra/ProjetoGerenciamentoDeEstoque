@@ -14,7 +14,7 @@
           <lucide-icon [name]="Package" class="stat-icon-svg"></lucide-icon>
         </span>
       </div>
-      <p class="stat-value stat-value-blue">120</p>
+      <p class="stat-value stat-value-blue">{{ totalItems() }}</p>
     </div>
     <div class="stat-card">
       <div class="stat-header">
@@ -23,7 +23,7 @@
           <lucide-icon [name]="CheckCircle" class="stat-icon-svg"></lucide-icon>
         </span>
       </div>
-      <p class="stat-value stat-value-green">78</p>
+      <p class="stat-value stat-value-green">{{ availableItems() }}</p>
     </div>
     <div class="stat-card">
       <div class="stat-header">
@@ -32,7 +32,7 @@
           <lucide-icon [name]="Users" class="stat-icon-svg"></lucide-icon>
         </span>
       </div>
-      <p class="stat-value stat-value-indigo">35</p>
+      <p class="stat-value stat-value-indigo">{{ inUseItems() }}</p>
     </div>
     <div class="stat-card">
       <div class="stat-header">
@@ -41,7 +41,7 @@
           <lucide-icon [name]="Wrench" class="stat-icon-svg"></lucide-icon>
         </span>
       </div>
-      <p class="stat-value stat-value-orange">7</p>
+      <p class="stat-value stat-value-orange">{{ maintenanceItems() }}</p>
     </div>
   </section>
 
@@ -54,11 +54,11 @@
     </div>
     <div class="utilization-body">
       <div class="progress-bar">
-        <span class="progress-fill" style="width: 65%"></span>
+        <span class="progress-fill" [style.width.%]="utilizationPercent()"></span>
       </div>
-      <span class="utilization-value">65%</span>
+      <span class="utilization-value">{{ utilizationPercent() }}%</span>
     </div>
-    <p class="utilization-note">35 de 113 itens ativos em uso</p>
+    <p class="utilization-note">{{ inUseItems() }} de {{ activeItems() }} itens ativos em uso</p>
   </section>
 
   <section class="two-column">
@@ -67,27 +67,26 @@
         <h3>Itens Cadastrados</h3>
       </div>
       <div class="list">
-        <div class="list-item">
-          <div class="list-main">
-            <p class="list-title">Notebook Dell 5420</p>
-            <p class="list-subtitle">Nº 5420-AX11</p>
+        @if (recentItems().length === 0) {
+          <div class="list-item">
+            <div class="list-main">
+              <p class="list-title">Nenhum item cadastrado</p>
+              <p class="list-subtitle">Cadastre itens para ver o resumo.</p>
+            </div>
           </div>
-          <span class="badge badge-green">Disponível</span>
-        </div>
-        <div class="list-item">
-          <div class="list-main">
-            <p class="list-title">Monitor LG 27"</p>
-            <p class="list-subtitle">Nº LG-27-990</p>
-          </div>
-          <span class="badge badge-blue">Em Uso</span>
-        </div>
-        <div class="list-item">
-          <div class="list-main">
-            <p class="list-title">Impressora HP</p>
-            <p class="list-subtitle">Nº HP-3300</p>
-          </div>
-          <span class="badge badge-orange">Manutenção</span>
-        </div>
+        } @else {
+          @for (item of recentItems(); track item.id) {
+            <div class="list-item">
+              <div class="list-main">
+                <p class="list-title">{{ item.name }}</p>
+                <p class="list-subtitle">Nº {{ item.serialNumber || '-' }}</p>
+              </div>
+              <span class="badge" [ngClass]="statusUi.itemStatusClass(item.statusItem)">
+                {{ item.statusItem }}
+              </span>
+            </div>
+          }
+        }
       </div>
     </div>
 
@@ -96,27 +95,28 @@
         <h3>Movimentações Recentes</h3>
       </div>
       <div class="list">
-        <div class="list-item">
-          <div class="list-main">
-            <p class="list-title">Notebook Dell 5420</p>
-            <p class="list-subtitle">10/01/2026 09:15</p>
+        @if (recentMovements().length === 0) {
+          <div class="list-item">
+            <div class="list-main">
+              <p class="list-title">Nenhuma movimentação registrada</p>
+              <p class="list-subtitle">Movimente itens para ver o histórico.</p>
+            </div>
           </div>
-          <span class="badge badge-blue">Atribuição</span>
-        </div>
-        <div class="list-item">
-          <div class="list-main">
-            <p class="list-title">Monitor LG 27"</p>
-            <p class="list-subtitle">09/01/2026 16:40</p>
-          </div>
-          <span class="badge badge-green">Devolução</span>
-        </div>
-        <div class="list-item">
-          <div class="list-main">
-            <p class="list-title">Impressora HP</p>
-            <p class="list-subtitle">08/01/2026 11:25</p>
-          </div>
-          <span class="badge badge-orange">Manutenção</span>
-        </div>
+        } @else {
+          @for (movement of recentMovements(); track movement.id) {
+            <div class="list-item">
+              <div class="list-main">
+                <p class="list-title">{{ statusUi.movementItemLabel(movement) }}</p>
+                <p class="list-subtitle">
+                  {{ statusUi.formatDateTime(movement.movementDateTime) }}
+                </p>
+              </div>
+              <span class="badge" [ngClass]="statusUi.movementTypeClass(movement.movementType)">
+                {{ statusUi.movementTypeLabel(movement.movementType) }}
+              </span>
+            </div>
+          }
+        }
       </div>
     </div>
   </section>

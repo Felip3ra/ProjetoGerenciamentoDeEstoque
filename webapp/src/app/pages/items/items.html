@@ -2,7 +2,7 @@
   <header class="page-header">
     <div>
       <h1>Itens</h1>
-      <p class="page-subtitle">24 item(ns) encontrado(s)</p>
+      <p class="page-subtitle">{{FilteredItems().length}} item(ns) encontrado(s)</p>
     </div>
     <button class="primary-button" type="button" (click)="showItemForm()">
       <lucide-icon [name]="Plus" class="button-icon"></lucide-icon>
@@ -17,41 +17,42 @@
         <input
           type="text"
           placeholder="Buscar por nome, marca, modelo ou número de série..."
+          (input)="SearchTerm.set($any($event.target).value)"
         />
       </div>
-      <button class="outline-button" type="button">
+      <button class="outline-button" type="button" (click)="clearFilters()">
         <lucide-icon [name]="Filter" class="button-icon"></lucide-icon>
-        Filtros
+        Limpar filtros
       </button>
     </div>
 
     <div class="filters-grid">
       <div class="field">
         <label>Status</label>
-        <select>
-          <option>Todos</option>
-          <option>Disponível</option>
-          <option>Em Uso</option>
-          <option>Manutenção</option>
-          <option>Baixado</option>
+        <select (change)="StatusFilter.set($any($event.target).value)">
+          <option value="">Todos</option>
+          <option value="Disponivel">Disponível</option>
+          <option value="Em Uso">Em Uso</option>
+          <option value="Manutencao">Manutenção</option>
+          <option value="Baixado">Baixado</option>
         </select>
       </div>
       <div class="field">
         <label>Categoria</label>
-        <select>
-          <option>Todas</option>
-          <option>Notebooks</option>
-          <option>Monitores</option>
-          <option>Impressoras</option>
+        <select (change)="CategoryFilter.set($any($event.target).value)">
+          <option value="">Todas</option>
+          <option value="Notebooks">Notebooks</option>
+          <option value="Monitores">Monitores</option>
+          <option value="Impressoras">Impressoras</option>
         </select>
       </div>
       <div class="field">
-        <label>Responsavel</label>
-        <select>
-          <option>Todos</option>
-          <option>Letícia</option>
-          <option>João</option>
-          <option>Fernanda</option>
+        <label>Responsável</label>
+        <select (change)="UserFilter.set($any($event.target).value)">
+          <option value="">Todos</option>
+          <option value="Leticia">Letícia</option>
+          <option value="Joao">João</option>
+          <option value="Fernanda">Fernanda</option>
         </select>
       </div>
     </div>
@@ -66,29 +67,30 @@
             <th>Nº Série</th>
             <th>Categoria</th>
             <th>Status</th>
-            <th>Responsavel</th>
-            <th class="align-right">Acoes</th>
+            <th>Responsável</th>
+            <th class="align-right">Ações</th>
           </tr>
         </thead>
         <tbody>
-          <tr>
+          @for (item of FilteredItems(); track item.id) {
+            <tr>
             <td>
-              <p class="table-title">Notebook Dell 5420</p>
-              <p class="table-subtitle">Dell • 16GB</p>
+              <p class="table-title">{{item.name}}</p>
+              <p class="table-subtitle">{{item.model}}</p>
             </td>
-            <td>5420-AX11</td>
-            <td>Notebooks</td>
-            <td><span class="badge badge-blue">Em Uso</span></td>
-            <td>Letícia</td>
+            <td>{{item.patrimonyNumber}}</td>
+            <td>{{item.category}}</td>
+            <td><span class="badge badge-blue">{{item.statusItem}}</span></td>
+            <td>{{item.currentUser}}</td>
             <td class="align-right">
               <div class="action-row">
-                <button class="icon-button" type="button" title="Mais opcoes" (click)="showMovement()">
+                <button class="icon-button" type="button" title="Mais opções" (click)="showMovement(item)">
                   <lucide-icon [name]="More" class="icon"></lucide-icon>
                 </button>
-                <button class="icon-button" type="button" title="Ver detalhes e historico" (click)="showItemDetails()">
+                <button class="icon-button" type="button" title="Ver detalhes e histórico" (click)="showItemDetails(item)">
                   <lucide-icon [name]="History" class="icon"></lucide-icon>
                 </button>
-                <button class="icon-button" type="button" title="Editar" (click)="showItemEdit()">
+                <button class="icon-button" type="button" title="Editar" (click)="showItemEdit(item)">
                   <lucide-icon [name]="Edit" class="icon"></lucide-icon>
                 </button>
                 <button class="icon-button" type="button" title="Deletar">
@@ -97,58 +99,14 @@
               </div>
             </td>
           </tr>
-          <tr>
-            <td>
-              <p class="table-title">Monitor LG 27"</p>
-              <p class="table-subtitle">LG • IPS</p>
-            </td>
-            <td>LG-27-990</td>
-            <td>Monitores</td>
-            <td><span class="badge badge-green">Disponível</span></td>
-            <td>-</td>
-            <td class="align-right">
-              <div class="action-row">
-                <button class="icon-button" type="button" title="Mais opcoes" (click)="showMovement()">
-                  <lucide-icon [name]="More" class="icon"></lucide-icon>
-                </button>
-                <button class="icon-button" type="button" title="Ver detalhes e historico" (click)="showItemDetails()">
-                  <lucide-icon [name]="History" class="icon"></lucide-icon>
-                </button>
-                <button class="icon-button" type="button" title="Editar" (click)="showItemEdit()">
-                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
-                </button>
-                <button class="icon-button" type="button" title="Deletar">
-                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
-                </button>
-              </div>
-            </td>
-          </tr>
-          <tr>
-            <td>
-              <p class="table-title">Impressora HP</p>
-              <p class="table-subtitle">Laserjet 3300</p>
-            </td>
-            <td>HP-3300</td>
-            <td>Impressoras</td>
-            <td><span class="badge badge-orange">Manutenção</span></td>
-            <td>Roberta</td>
-            <td class="align-right">
-              <div class="action-row">
-                <button class="icon-button" type="button" title="Mais opcoes" (click)="showMovement()">
-                  <lucide-icon [name]="More" class="icon"></lucide-icon>
-                </button>
-                <button class="icon-button" type="button" title="Ver detalhes e historico" (click)="showItemDetails()">
-                  <lucide-icon [name]="History" class="icon"></lucide-icon>
-                </button>
-                <button class="icon-button" type="button" title="Editar" (click)="showItemEdit()">
-                  <lucide-icon [name]="Edit" class="icon"></lucide-icon>
-                </button>
-                <button class="icon-button" type="button" title="Deletar">
-                  <lucide-icon [name]="Trash" class="icon"></lucide-icon>
-                </button>
-              </div>
-            </td>
-          </tr>
+          }
+          @if (FilteredItems().length === 0) {
+            <tr>
+              <td colspan="6">
+                Nenhum item adicionado
+              </td>
+            </tr>
+          }
         </tbody>
       </table>
     </div>
@@ -161,15 +119,15 @@
 }
 @if (OpenItemEdit()) {
 
-  <app-item-edit-modal (close)="OpenItemEdit.set(false)"></app-item-edit-modal>
+  <app-item-edit-modal [item]="SelectedItem()" (close)="OpenItemEdit.set(false); SelectedItem.set(null)"></app-item-edit-modal>
 }
 @if (OpenItemDetails()) {
 
-  <app-item-details-modal (close)="OpenItemDetails.set(false)"></app-item-details-modal>
+  <app-item-details-modal [item]="SelectedItem()" (close)="OpenItemDetails.set(false); SelectedItem.set(null)"></app-item-details-modal>
 }
 @if (OpenMovement()) {
 
-  <app-movement-modal (close)="OpenMovement.set(false)"></app-movement-modal>
+  <app-movement-modal [item]="SelectedItem()" (close)="OpenMovement.set(false); SelectedItem.set(null)"></app-movement-modal>
 }
 
 

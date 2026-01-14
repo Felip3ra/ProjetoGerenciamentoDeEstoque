@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using ProjetoGerenciamentoEstoque.Application.Services;
 using ProjetoGerenciamentoEstoque.Domain.Models;
 
@@ -13,12 +14,14 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
         {
             _itemService = itemService;
         }
+        [Authorize]
         [HttpGet("GetAllItems")]
         public async Task<IActionResult> GetAllItems()
         {
             var items = await _itemService.GetAllAsync();
             return Ok(items);
         }
+        [Authorize]
         [HttpGet("GetItemById/{id}")]
         public async Task<IActionResult> GetItemById(int id)
         {
@@ -29,6 +32,7 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
             }
             return Ok(item);
         }
+        [Authorize]
         [HttpPost("AddItem")]
         public async Task<IActionResult> AddItem(Item item)
         {
@@ -47,6 +51,7 @@ namespace ProjetoGerenciamentoEstoque.Presentation.Controllers
             }
             return BadRequest("Erro ao adicionar o item");
         }
+        [Authorize]
         [HttpPut("UpdateItem")]
         public async Task<IActionResult> UpdateItem(Item item)
         {
