@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace ProjetoGerenciamentoEstoque.Domain.Models
 {
@@ -12,12 +13,15 @@ namespace ProjetoGerenciamentoEstoque.Domain.Models
         public Department Department { get; set; }
         public Status Status { get; set; }
         public bool HasAccess { get; set; }
-        public string PasswordHash { get; set; }
+        public string? PasswordHash { get; set; }
         public string Profile { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public ICollection<Item> Items { get; set; }
-        public ICollection<Movement> MovementsFrom { get; set; }
-        public ICollection<Movement> MovementsTo { get; set; }
+        [JsonIgnore]
+        public ICollection<Item>? Items { get; set; }
+        [JsonIgnore]
+        public ICollection<Movement>? MovementsFrom { get; set; }
+        [JsonIgnore]
+        public ICollection<Movement>? MovementsTo { get; set; }
     }
 }

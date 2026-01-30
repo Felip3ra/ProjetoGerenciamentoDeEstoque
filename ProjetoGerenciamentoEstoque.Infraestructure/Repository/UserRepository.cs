@@ -92,7 +92,29 @@ namespace ProjetoGerenciamentoEstoque.Infraestructure.Repository
         {
             try
             {
-                _context.Users.Update(user);
+                var existing = await _context.Users.FirstOrDefaultAsync(x => x.Id == user.Id);
+                if (existing == null)
+                {
+                    return false;
+                }
+
+                existing.Name = user.Name;
+                existing.Email = user.Email;
+                existing.Department = user.Department;
+                existing.Status = user.Status;
+                existing.HasAccess = user.HasAccess;
+                existing.Profile = user.Profile;
+                existing.CreatedAt = user.CreatedAt;
+
+                if (user.Status != Status.Active)
+                {
+                    existing.PasswordHash = null;
+                }
+                else if (!string.IsNullOrWhiteSpace(user.PasswordHash))
+                {
+                    existing.PasswordHash = _passwordHasher.HashPassword(user.PasswordHash);
+                }
+
                 await _context.SaveChangesAsync();
                 return true;
             }

@@ -416,3 +416,25 @@ FodyWeavers.xsd
 *.msix
 *.msm
 *.msp
+
+# Frontend (Vite/React)
+webapp/node_modules/
+webapp/dist/
+webapp/.env
+webapp/.env.*.local
+webapp/.vite/
+webapp/.sidecar/
+
+# Tauri/Rust
+webapp/src-tauri/target/
+webapp/src-tauri/.tauri/
+webapp/src-tauri/.cargo/
+webapp/src-tauri/bin/
+webapp/src-tauri/Cargo.lock
+
+# ASP.NET wwwroot (frontend build output)
+ProjetoGerenciamentoEstoque.Presentation/wwwroot/index.html
+ProjetoGerenciamentoEstoque.Presentation/wwwroot/main-*.js
+ProjetoGerenciamentoEstoque.Presentation/wwwroot/styles-*.css
+ProjetoGerenciamentoEstoque.Presentation/wwwroot/3rdpartylicenses.txt
+ProjetoGerenciamentoEstoque.Presentation/wwwroot/prerendered-routes.json

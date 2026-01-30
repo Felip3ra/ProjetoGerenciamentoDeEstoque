@@ -1,6 +1,7 @@
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi;
+using System.Text.Json.Serialization;
 using ProjetoGerenciamentoEstoque.Application.Repository;
 using ProjetoGerenciamentoEstoque.Application.Services;
 using ProjetoGerenciamentoEstoque.Infraestructure.Context;
@@ -40,7 +41,27 @@ builder.Services.AddAuthentication()
 
 builder.Services.AddAuthorization();
 
-builder.Services.AddControllers();
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    });
+
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("Frontend", policy =>
+        policy
+            .WithOrigins(
+                "http://localhost:5173",
+                "https://localhost:5173",
+                "http://127.0.0.1:5173",
+                "https://127.0.0.1:5173",
+                "tauri://localhost"
+            )
+            .AllowAnyHeader()
+            .AllowAnyMethod()
+    );
+});
 
 builder.Services.AddDbContext<AppDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection"),
@@ -64,6 +85,8 @@ if (app.Environment.IsDevelopment())
 }
 
 app.UseHttpsRedirection();
+
+app.UseCors("Frontend");
 
 app.UseDefaultFiles();
 app.UseStaticFiles();

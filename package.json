@@ -1,0 +1,10 @@
+{
+  "name": "projeto-gerenciamento-estoque",
+  "private": true,
+  "scripts": {
+    "dev": "concurrently -k -n backend,frontend -c blue,green \"dotnet run --project .\\\\ProjetoGerenciamentoEstoque.Presentation\\\\ProjetoGerenciamentoEstoque.Presentation.csproj --launch-profile https\" \"npm --prefix webapp run dev\""
+  },
+  "devDependencies": {
+    "concurrently": "^9.2.1"
+  }
+}

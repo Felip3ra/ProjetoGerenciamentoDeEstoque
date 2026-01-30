@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace ProjetoGerenciamentoEstoque.Domain.Models
 {
@@ -13,12 +14,15 @@ namespace ProjetoGerenciamentoEstoque.Domain.Models
         public string MovementType { get; set; }
         public DateTime MovementDateTime { get; set; }
         public string Observation { get; set; }
-        public string PreviousStatus { get; set; }
+        public string? PreviousStatus { get; set; }
         public string NewStatus { get; set; }
         public DateTime CreatedAt { get; set; }
 
-        public Item Item { get; set; }
-        public User FromUser { get; set; }
-        public User ToUser { get; set; }
+        [JsonIgnore]
+        public Item? Item { get; set; }
+        [JsonIgnore]
+        public User? FromUser { get; set; }
+        [JsonIgnore]
+        public User? ToUser { get; set; }
     }
 }

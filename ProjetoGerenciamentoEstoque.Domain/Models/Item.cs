@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using System.Text.Json.Serialization;
 
 namespace ProjetoGerenciamentoEstoque.Domain.Models
 {
@@ -20,7 +21,9 @@ namespace ProjetoGerenciamentoEstoque.Domain.Models
         public DateTime CreatedAt { get; set; }
         public DateTime UpdatedAt { get; set; }
 
-        public User CurrentUser { get; set; }
-        public ICollection<Movement> Movements { get; set; }
+        [JsonIgnore]
+        public User? CurrentUser { get; set; }
+        [JsonIgnore]
+        public ICollection<Movement>? Movements { get; set; }
     }
 }

@@ -1,0 +1,1092 @@
+DECLARE @now datetime2 = SYSUTCDATETIME();
+
+INSERT INTO Items (
+  Category,
+  Name,
+  Brand,
+  Model,
+  SerialNumber,
+  PatrimonyNumber,
+  Description,
+  PurchaseDate,
+  StatusItem,
+  CurrentUserId,
+  CreatedAt,
+  UpdatedAt
+)
+VALUES
+(
+  N'Notebook',
+  N'BR-NOT-DEV-20',
+  N'Dell',
+  N'Inspiron 15 3511',
+  N'1G4WYY3',
+  N'000037',
+  N'AD/MAIL: aslima
+SO: Windows 11 PRO
+PROCESSADOR: i5-1135G7
+MEMORIA: 8GB
+DISCO: 500GB
+MAC WIFI: dc:46:28:fd:22:5d
+MAC CABO: -
+ANYDESK: 
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-14',
+  N'Dell',
+  N'Latitude 3410',
+  N'Rasurado',
+  N'000032',
+  N'AD/MAIL: amoreira
+SO: Windows 11 PRO
+PROCESSADOR: i5-10210U
+MEMORIA: 32GB
+DISCO: 250GB | 1TB
+MAC WIFI: 00:d7:6d:03:e9:13
+MAC CABO: 34:73:5a:f2:a1:cc
+ANYDESK: 1250448693
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-ADM-01',
+  N'Dell',
+  N'Latitude 3540',
+  N'4SGHR04',
+  N'000010',
+  N'AD/MAIL: amonteiro
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: 90:09:df:bd:56:e1
+MAC CABO: 4c:d7:17:5a:aa:42
+ANYDESK: 1647158510
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-OPER-04',
+  N'Dell',
+  N'Latitude 3440',
+  N'2SGHR04',
+  N'000009',
+  N'AD/MAIL: arsouza
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: 90:09:df:c0:1b:92
+MAC CABO: 4c:d7:17:59:a4:f5
+ANYDESK: 1102074764
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-24',
+  N'Dell',
+  N'NP767XCM',
+  N'D52G344',
+  N'000025',
+  N'AD/MAIL: amuniz
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: 58:6d:67:d8:43
+MAC CABO: 28:00:af:c8:6d:d6
+ANYDESK: 1437383701
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-08',
+  N'Dell',
+  N'Latitude 3540',
+  N'C52G344',
+  N'000018',
+  N'AD/MAIL: asouza
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: 58:0d:67:61:d8:3e
+MAC CABO: 20:00:af:c8:6c:4c
+ANYDESK: 1354850824
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-REQ-02',
+  N'Lenovo',
+  N'IdeaPad S145',
+  N'PE05RS1D',
+  N'000046',
+  N'AD/MAIL: bnascimento
+SO: Windows 11 PRO
+PROCESSADOR: Ryzen 7 3700U
+MEMORIA: 8GB
+DISCO: 250GB
+MAC WIFI: e4:aa:ea:dc:91:0b
+MAC CABO: -
+ANYDESK: 1825251723
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-16',
+  N'Dell',
+  N'Latitude 3410',
+  N'FLBM2D3',
+  N'000013',
+  N'AD/MAIL: bpsilva
+SO: Windows 11 PRO
+PROCESSADOR: i5-10210U
+MEMORIA: 32GB
+DISCO: 250GB | 1TB
+MAC WIFI: 5c:cd:5b:e2:e0:5f
+MAC CABO: b0:7B:25:70:f3:b6
+ANYDESK: 1638175297
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-COM-01',
+  N'Lenovo',
+  N'IdeaPad 3',
+  N'PE08ZETR',
+  N'000015',
+  N'AD/MAIL: clufti
+SO: Windows 11 PRO
+PROCESSADOR: i5-10210U
+MEMORIA: 8GB
+DISCO: 250GB
+MAC WIFI: 8c:1d:96:67:3c:e8
+MAC CABO: -
+ANYDESK: 1751437993
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-QA-05',
+  N'Dell',
+  N'Inspiron 15 3511',
+  N'H2K6BW3',
+  N'000011',
+  N'AD/MAIL: cnhahne
+SO: Windows 11 PRO
+PROCESSADOR: i5-1135G7
+MEMORIA: 8GB
+DISCO: 500GB
+MAC WIFI: 00:d7:6d:99:3b:71
+MAC CABO: -
+ANYDESK: 1622492152
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-03',
+  N'Dell',
+  N'Latitude 3540',
+  N'2TRB034',
+  N'000023',
+  N'AD/MAIL: dmarcondes
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 32GB
+DISCO: 500GB
+MAC WIFI: 58:6d:67:1e:79:e5
+MAC CABO: 28:00:af:b8:cb:ed
+ANYDESK: 1032239481
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-10',
+  N'Dell',
+  N'Latitude 3550',
+  N'JYJFN74',
+  N'000033',
+  N'AD/MAIL: doliveira
+SO: Windows 11 PRO
+PROCESSADOR: i7-1355U
+MEMORIA: 16GB
+DISCO: 1TB
+MAC WIFI: c4:47:4e:37:d2:37
+MAC CABO: 10:98:19:b8:8b:2e
+ANYDESK: 
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-QA-02',
+  N'Lenovo',
+  N'IdeaPad S145',
+  N'PE07EGDS',
+  N'000039',
+  N'AD/MAIL: dthalys
+SO: Windows 11 PRO
+PROCESSADOR: i5-1035G1
+MEMORIA: 12GB
+DISCO: 250GB
+MAC WIFI: a4:63:a1:6a:2d:f2
+MAC CABO: -
+ANYDESK: 438179126
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-REQ-03',
+  N'Lenovo',
+  N'IdeaPad S145',
+  N'PE064L58',
+  N'000014',
+  N'AD/MAIL: dramos
+SO: Windows 11 PRO
+PROCESSADOR: Ryzen 5 3500U
+MEMORIA: 8GB
+DISCO: 250GB
+MAC WIFI: a4:63:a1:44:db:aa
+MAC CABO: -
+ANYDESK: 1769065225
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-PROJ-03',
+  N'Lenovo',
+  N'IdeaPad 3',
+  N'PE09S6KN',
+  N'000016',
+  N'AD/MAIL: dsiqueira
+SO: Windows 11 PRO
+PROCESSADOR: i5-1135G7
+MEMORIA: 8GB
+DISCO: 250GB
+MAC WIFI: e4:fd:45:8e:31:95
+MAC CABO: -
+ANYDESK: 1979212373
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-15',
+  N'Dell',
+  N'Inspiron 15 3511',
+  N'2G4WYY3',
+  N'000028',
+  N'AD/MAIL: enahas
+SO: Windows 11 PRO
+PROCESSADOR: i5-1135G7
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: dc:46:28:fd:f3:e5
+MAC CABO: -
+ANYDESK: 1644692681
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-PROJ-02',
+  N'Lenovo',
+  N'IdeaPad 3',
+  N'PE08ZE2Z',
+  N'000012',
+  N'AD/MAIL: eguedes
+SO: Windows 11 PRO
+PROCESSADOR: i5-10210U
+MEMORIA: 8GB
+DISCO: 250GB
+MAC WIFI: 10:51:07:03:e3:64
+MAC CABO: -
+ANYDESK: 1455628252
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-17',
+  N'Dell',
+  N'Inspiron 15 3511',
+  N'GW92JW3',
+  N'000048',
+  N'AD/MAIL: fsantos
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 20GB
+DISCO: 500GB
+MAC WIFI: 00:d7:6d:95:6a:9b
+MAC CABO: -
+ANYDESK: 1594527717
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-13',
+  N'Dell',
+  N'Inspiron 15 3511',
+  N'G2K6BW3',
+  N'000026',
+  N'AD/MAIL: ifernandes
+SO: Windows 11 PRO
+PROCESSADOR: i5-1135G7
+MEMORIA: 32GB
+DISCO: 500GB
+MAC WIFI: 00:d7:6d:99:50:66
+MAC CABO: -
+ANYDESK: 1704432741
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-11',
+  N'Dell',
+  N'Latitude 3540',
+  N'985DN04',
+  N'000020',
+  N'AD/MAIL: jfpiedade
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: d4:e9:8a:6a:e8:52
+MAC CABO: 4c:d7:17:5a:aa:ba
+ANYDESK: 1643872053
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-QA-01',
+  N'Lenovo',
+  N'IdeaPad 3',
+  N'PE08ZE2Z-BR-NOT-QA-01',
+  N'000044',
+  N'AD/MAIL: jrodrigues
+SO: Windows 11 PRO
+PROCESSADOR: i5-10210U
+MEMORIA: 12GB
+DISCO: 250GB
+MAC WIFI: f0:57:a6:a1:f6:3a
+MAC CABO: -
+ANYDESK: 1482582064
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-OPER-03',
+  N'Dell',
+  N'Inspiron 15 3511',
+  N'J2K6BW3',
+  N'000034',
+  N'AD/MAIL: jferreira
+SO: Windows 11 PRO
+PROCESSADOR: i5-133G7
+MEMORIA: 12GB
+DISCO: 500GB
+MAC WIFI: 00:d7:6d:99:5e:44
+MAC CABO: -
+ANYDESK: 1865860756
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-18',
+  N'Dell',
+  N'Latitude 3520',
+  N'6VZHJZ3',
+  N'000030',
+  N'AD/MAIL: kpessoa
+SO: Windows 11 PRO
+PROCESSADOR: i5-1135G7
+MEMORIA: 32GB
+DISCO: 500GB
+MAC WIFI: 74:13:ea:2a:9e:b4
+MAC CABO: ac:1A:3d:be:91:00
+ANYDESK: 418798561
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Desktop',
+  N'BR-DESK-OPER-01',
+  N'Dell',
+  N'OptPlex 3040',
+  N'FTVKKF2',
+  N'000006',
+  N'AD/MAIL: ksilva
+SO: Windows 11 PRO
+PROCESSADOR: i5-6500
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: -
+MAC CABO: f4:8e:38:e0:0e:c4
+ANYDESK: 598818746
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-OPER-06',
+  N'Dell',
+  N'Inspiron 15 3511',
+  N'53HN4X3',
+  N'000035',
+  N'AD/MAIL: lquintal
+SO: Windows 11 PRO
+PROCESSADOR: i5-1135G7
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: 00:d7:6d:5c:3c:f8
+MAC CABO: -
+ANYDESK: 1293159345
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-22',
+  N'Lenovo',
+  N'IdeaPad S145',
+  N'PE07QHRN',
+  N'000047',
+  N'AD/MAIL: loliveira
+SO: Windows 11 PRO
+PROCESSADOR: i5-1035G1
+MEMORIA: 8GB
+DISCO: 250GB
+MAC WIFI: 00:d7:6d:08:5d:7e
+MAC CABO: -
+ANYDESK: 1922668987
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO: EX - Guilherme Ferrari - Emprestado - Letícia',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-07',
+  N'Dell',
+  N'Latitude 3540',
+  N'JMXV224',
+  N'000031',
+  N'AD/MAIL: msilva
+SO: Windows 11 PRO
+PROCESSADOR: 15-1335U
+MEMORIA: 32GB
+DISCO: 500GB
+MAC WIFI: 58:6d:67:00:02:3a
+MAC CABO: 4c:d7:17:5c:e0:31
+ANYDESK: 1737847872
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-23',
+  N'Dell',
+  N'Latitude 3420',
+  N'1ZD16V3',
+  N'000049',
+  N'AD/MAIL: mcosta
+SO: Windows 11 PRO
+PROCESSADOR: i5-1135G7
+MEMORIA: 16GB
+DISCO: 250GB
+MAC WIFI: 00:d7:6d:9b:1f:d1
+MAC CABO: c8:4b:d6:31:dd:13
+ANYDESK: 1928160185
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-REQ-01',
+  N'Lenovo',
+  N'IdeaPad S145',
+  N'PE07B4R7',
+  N'000019',
+  N'AD/MAIL: mangelini
+SO: Windows 11 PRO
+PROCESSADOR: i5-1035G1
+MEMORIA: 8GB
+DISCO: 250GB
+MAC WIFI: a4:63:a1:6e:65:4b
+MAC CABO: -
+ANYDESK: 1265369669
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-COM-02',
+  N'Lenovo',
+  N'IdeaPad 3',
+  N'PE08AH2F',
+  N'000022',
+  N'AD/MAIL: mmvalle
+SO: Windows 11 PRO
+PROCESSADOR: i5-1135G7
+MEMORIA: 8GB
+DISCO: 250GB
+MAC WIFI: 80:38:fb:90:5d:d5
+MAC CABO: -
+ANYDESK: 1939453411
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-OPER-05',
+  N'Dell',
+  N'Inspirion 5558',
+  N'FZ2TKF2',
+  N'000007',
+  N'AD/MAIL: mtavares
+SO: Windows 11 PRO
+PROCESSADOR: i7-5500U
+MEMORIA: 16GB
+DISCO: 250GB
+MAC WIFI: 94:53:30:ca:f8:e9
+MAC CABO: 84:7b:eb:e3:6e:dc
+ANYDESK: 1027434635
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-OPER-01',
+  N'Dell',
+  N'Pro 16',
+  N'DC6GJG4',
+  N'000058',
+  N'AD/MAIL: mhonorato
+SO: Windows 11 PRO
+PROCESSADOR: i5-1345U
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: f8:cf:52:2b:3a:ef
+MAC CABO: fc:4c:ea:eb:c6:43
+ANYDESK: 
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-02',
+  N'Dell',
+  N'Latitude 3540',
+  N'1TRB034',
+  N'000024',
+  N'AD/MAIL: niraha
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 12GB
+DISCO: 500GB
+MAC WIFI: 58:6d:67:1e:7a:03
+MAC CABO: 20:00:af:b8:cc:69
+ANYDESK: 1349572615
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Desktop',
+  N'BR-DESK-DEV-01',
+  N'Dell',
+  N'OptPlex 3040',
+  N'26042j2',
+  N'000029',
+  N'AD/MAIL: alima
+SO: Windows 11 PRO
+PROCESSADOR: i3-6100
+MEMORIA: 8BG
+DISCO: 500GB
+MAC WIFI: -
+MAC CABO: 84:7b:eb:e7:ef:3e
+ANYDESK: 1961473645
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-05',
+  N'Dell',
+  N'Latitude 3440',
+  N'8KMJL34',
+  N'000008',
+  N'AD/MAIL: rueda
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 16GB
+DISCO: 250GB
+MAC WIFI: 58:6d:67:50:62:7f
+MAC CABO: 28:00:af:b5:8e:7e
+ANYDESK: 1332897284
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-04',
+  N'Dell',
+  N'Latitude 3540',
+  N'9KMJL34',
+  N'000005',
+  N'AD/MAIL: rpsantos
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 16GB
+DISCO: 250GB
+MAC WIFI: 58:6d:67:50:5f:28
+MAC CABO: 28:00:af:b5:96:fc
+ANYDESK: 655450081
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-01',
+  N'Dell',
+  N'Latitude 3520',
+  N'78FYMZ3',
+  N'000017',
+  N'AD/MAIL: rmartins
+SO: Windows 11 PRO
+PROCESSADOR: i5-1135G7
+MEMORIA: 32GB
+DISCO: 500GB
+MAC WIFI: c0:a5:e8:57:c1:55
+MAC CABO: ac:1a:3d:be:88:5a
+ANYDESK: 1477703889
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-PROC-01',
+  N'Dell',
+  N'Latitude 3540',
+  N'HMXV224',
+  N'000001',
+  N'AD/MAIL: rarruda
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: 4c:49:6c:ac:85:00
+MAC CABO: 4c:d7:17:7a:f9:7c
+ANYDESK: 1996674561
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-MKT-01',
+  N'Dell',
+  N'Latitude 3520',
+  N'6VZHJZ3-BR-NOT-MKT-01',
+  N'000002',
+  N'AD/MAIL: tbarbosa
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: 74:13:ea:2a:9d:3d
+MAC CABO: 4c:d7:17:59:9e:fb
+ANYDESK: 1229323567
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-12',
+  N'Dell',
+  N'Latitude 3540',
+  N'885DN04',
+  N'000021',
+  N'AD/MAIL: tcpereira
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 32GB
+DISCO: 500GB
+MAC WIFI: d4:e9:8a:6a:e8:98
+MAC CABO: 4c:d7:17:59:96:39
+ANYDESK: 1 579 709 611
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-DEV-06',
+  N'Dell',
+  N'Latitude 3540',
+  N'3TRB034',
+  N'000027',
+  N'AD/MAIL: vsantos
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 32GB
+DISCO: 500GB
+MAC WIFI: 58:6d:67:1e:79:db
+MAC CABO: 28:00:af:b8:cc:33
+ANYDESK: 1522523773
+ADM CENTER: 1
+AV: 1
+COFRE: 0
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-COM-03',
+  N'Apple',
+  N'N/A',
+  N'BR-NOT-COM-03',
+  N'000036',
+  N'AD/MAIL: 
+SO: 
+PROCESSADOR: 
+MEMORIA: 
+DISCO: 
+MAC WIFI: c6:6a:fe:1d:62:ba
+MAC CABO: -
+ANYDESK: 
+ADM CENTER: 0
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+),
+(
+  N'Notebook',
+  N'BR-NOT-OPER-07',
+  N'Dell',
+  N'Latitude 3540',
+  N'4MKJK24',
+  N'000004',
+  N'AD/MAIL: vsilva
+SO: Windows 11 PRO
+PROCESSADOR: i5-1335U
+MEMORIA: 16GB
+DISCO: 500GB
+MAC WIFI: 6c:f6:da:6f:bd:e1
+MAC CABO: 28:00:af:a1:67:04
+ANYDESK: 1836322209
+ADM CENTER: 1
+AV: 1
+COFRE: 1
+OBSERVACAO:',
+  '0001-01-01T00:00:00.0000000',
+  N'DISPONIVEL',
+  NULL,
+  @now,
+  @now
+);
